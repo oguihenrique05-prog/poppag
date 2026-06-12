@@ -1,629 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Balde de Pipoca Trufado</title>
-    <!-- Fontes externas removidas para melhorar LCP/renderização -->
-<!-- Prioridade para a imagem inicial/LCP -->
-    <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
-    <!-- Pré-carregamento das próximas imagens do fluxo -->
-    <link rel="prefetch" as="image" href="imagem2.webp">
-    <link rel="prefetch" as="image" href="imagem3.webp">
-    <link rel="prefetch" as="image" href="imagem4.webp">
-    <link rel="prefetch" as="image" href="imagem5.webp">
+    <title>Balde de Pipoca Trufado - Fature de R$ 2.000 a R$ 5.000/mês</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Usando Poppins para modernidade/conversão e Inter para leitura fluida -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Imagem 1 no LCP para carregar rápido na primeira tela -->
+    <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777', // Rosa Principal
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        }
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: boreder-box;
-        }
+        body { background-color: #ffffff; color: #1f2937; overflow-x: hidden; }
         
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #ffffff; /* Fundo Branco */
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 391px;
-            padding: 0 16px;
-            margin: 20px auto;
-        }
-        
-        .step {
-            display: none;
-        }
-        
-        .step.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .step.active.animate {
-            animation: fadeInSlideUp 0.35s ease-out forwards;
-        }
-        
-        .step-out {
-            animation: fadeOutSlideUp 0.2s ease-in forwards;
-        }
-
-        @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeOutSlideUp {
-            from {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateY(-10px); 
-            }
-        }
-        
-        .text-center { text-align: center; }
-        .mb-4 { margin-bottom: 16px; }
-        .mb-6 { margin-bottom: 24px; }
-        
-        .title {
-            font-size: 28px;
-            line-height: 34px;
-            font-weight: 800;
-            letter-spacing: -0.2px;
-            margin-bottom: 16px;
-        }
-        
-        .subtitle {
-            font-size: 16px;
-            line-height: 22px;
-            font-weight: 500;
-            color: #000;
-            margin-bottom: 24px;
-        }
-        
-        .question {
-            font-size: 20px;
-            line-height: 26px; 
-            font-weight: 800;
-            color: #1f2937;
-            margin-bottom: 24px;
-        }
-        
-        .description {
-            font-size: 15px;
-            line-height: 23px; 
-            color: #374151;
-        }
-        
-        .pink-text { color: #db2777; } /* Rosa um pouco mais escuro para textos puros */
-        
-        .highlight-black, .highlight-green, .highlight-pink {
-            display: inline;
-            font-weight: 900;
-        }
-        
-        .title-italic {
-            font-size: 26px;
-            line-height: 1.1;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-style: italic;
-            letter-spacing: -0.5px;
-            color: #111827;
-            margin-bottom: 16px;
-        }
-        
-        .highlight-black { color: #1f2937; }
-        .highlight-green { color: #059669; }
-        .highlight-pink { color: #db2777; } 
-        
-        .blue-banner {
-            background-color: #fdf2f8; 
-            color: #db2777; /* Rosa escuro */
-            text-align: center;
-            padding: 6px 12px;
-            margin-bottom: 16px;
-            font-size: 15px;
-            line-height: 18px;
-            font-weight: 800;
-            border-radius: 12px; 
-            border: 1px solid #fce7f3;
-        }
-        
-        .image-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            aspect-ratio: auto;
-            border-radius: 12px; 
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* CSS GLOBAL DOS BOTÕES ATUALIZADO */
-        .btn {
-            width: 100%;
-            min-height: 54px; 
-            border: none;
-            border-radius: 12px; 
-            padding: 16px; 
-            font-size: 18px; 
-            line-height: 22px;
-            font-weight: 800; 
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-            transition: all 0.25s ease;
-        }
-        
-        .btn-primary { background-color: #f9a8d4; color: #111827; }
-        
-        .btn-primary:hover {
-            background-color: #f472b6;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(244, 114, 182, 0.4);
-        }
-        
+        /* Botão de Compra Verde - Foco em Alta Conversão */
         .btn-success {
             background-color: #059669;
             color: white;
-            animation: pulseButton 1.75s infinite ease-in-out;
+            box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
+            transition: all 0.3s ease;
         }
-        
         .btn-success:hover {
             background-color: #047857;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(4, 120, 87, 0.4);
-            animation-play-state: paused;
-        }
-        
-        @keyframes pulseButton {
-            0%, 100% { 
-                transform: scale(1); 
-                box-shadow: 0 6px 16px rgba(4, 120, 87, 0.25);
-            }
-            50% { 
-                transform: scale(1.025); 
-                box-shadow: 0 8px 24px rgba(4, 120, 87, 0.4); 
-            }
-        }
-        
-        /* BOTÕES DE OPÇÃO DO QUIZ REFEITOS NA PALETA */
-        .option-btn {
-            width: 100%;
-            background-color: #ffffff; /* Fundo limpo */
-            border: 2px solid #fce7f3; /* Borda rosa sutil */
-            border-radius: 12px; 
-            padding: 16px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-align: left;
-            font-family: inherit; 
-            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02);
-            transition: all 0.2s ease;
-        }
-        
-        .option-btn:hover {
-            background-color: #fdf2f8; /* Fundo rosinha no hover */
-            border-color: #f9a8d4; /* Borda acende */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(249, 168, 212, 0.25); /* Sombra rosa */
-        }
-        
-        .option-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        .option-btn.selected {
-            background-color: #fce7f3; 
-            border-color: #f472b6;
-            transform: scale(0.98);
-        }
-        
-        .option-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
         }
 
-        .option-emoji {
-            font-size: 24px; 
-            line-height: 1; 
-        }
-        
-        .option-text {
-            font-size: 15px;
-            line-height: 19px;
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-        .option-arrow { color: #db2777; /* Seta rosa choque */ }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #fce7f3;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(219, 39, 119, 0.1); 
-        }
-        
-        .badge-text { font-size: 12px; font-weight: 800; color: #9d174d; }
-        
-        .benefits-list { margin-bottom: 24px; }
-        
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px; 
-            margin-bottom: 12px;
-            font-size: 14px; 
-            line-height: 20px;
-        }
-        
-        .check-icon { color: #059669; font-weight: 800; font-size: 16px; margin-top: 2px; }
-        
-        .bonus-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 24px;
-            background: #fffcfd;
-            padding: 16px;
-            border-radius: 12px; 
-            border: 1px solid #fce7f3;
-            font-size: 12px;
-            line-height: 16px;
-            font-weight: 500;
-        }
-        
-        .bonus-item { margin-bottom: 4px; }
-        
-        .guarantee-text {
-            font-size: 13px;
-            line-height: 16px;
-            color: #6b7280;
-            text-align: center;
-            margin-bottom: 24px;
-            font-weight: 500;
-        }
-        
-        .testimonial-section { margin-bottom: 24px; }
-        .testimonial-title { font-size: 18px; font-weight: 800; text-align: center; margin-bottom: 16px; color: #1f2937; }
-        .community-text { text-align: center; font-size: 14px; color: #db2777; margin-bottom: 4px; font-weight: 600; }
-        .community-name { text-align: center; font-size: 16px; color: #db2777; font-weight: 800; margin-bottom: 16px; }
-        .stats-text { text-align: center; font-size: 13px; color: #4b5563; margin-top: 16px; }
-        
-        .guarantee-badge { text-align: center; }
-        .guarantee-badge img { max-width: 100px; height: auto; }
-        
-        .green-box {
-            background-color: #dcfce7;
-            border: 1px solid #bbf7d0;
-            border-radius: 12px; 
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .green-text { font-size: 14px; line-height: 20px; color: #166534; font-weight: 500; }
-        .urgency-text { text-align: center; font-size: 15px; line-height: 20px; font-weight: 600; color: #1f2937; margin-bottom: 24px; }
-        .red-text { color: #dc2626; font-weight: 800; }
-
-        /* NOVOS BÔNUS PREMIUM */
-        .bonus-premium-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .bonus-card {
-            background: #fffcfd;
-            border: 2px dashed #f9a8d4;
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-align: left;
-            box-shadow: 0 4px 12px rgba(219, 39, 119, 0.05);
-        }
-        .bonus-icon {
-            font-size: 32px;
-            flex-shrink: 0;
-        }
-        .bonus-content { flex: 1; }
-        .bonus-title {
-            font-weight: 900;
-            color: #db2777;
-            font-size: 15px;
-            margin-bottom: 2px;
-            text-transform: uppercase;
-        }
-        .bonus-desc {
-            font-size: 13px;
-            color: #4b5563;
-            line-height: 1.4;
-            font-weight: 500;
-        }
-
-        /* FAQ - PERGUNTAS FREQUENTES */
-        .faq-container {
-            margin-bottom: 24px;
-            text-align: left;
-        }
-        .faq-header {
-            font-size: 20px;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 16px;
-            color: #1f2937;
-            text-transform: uppercase;
-            font-style: italic;
-        }
-        .faq-item {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-        }
-        .faq-q {
-            font-weight: 800;
-            font-size: 14px;
-            color: #111827;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .faq-q::before { content: "❓"; font-size: 16px; }
-        .faq-a {
-            font-size: 13px;
-            color: #4b5563;
-            line-height: 1.5;
-            padding-left: 24px;
-        }
-
-        /* NOVA ESTRUTURA DE COMENTÁRIOS ESTILO FACEBOOK */
-        .fb-comments-container {
-            margin-top: 16px;
-            margin-bottom: 24px;
-        }
-
-        @keyframes popInComment {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .fb-comment {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 20px;
-            text-align: left;
-            opacity: 0; /* Escondido inicialmente para o efeito cascata */
-        }
-
-        /* Efeito Cascata: Aparecem um por um quando a etapa fica ativa */
-        .step.active .fb-comment:nth-child(1) { animation: popInComment 0.4s ease-out forwards 0.3s; }
-        .step.active .fb-comment:nth-child(2) { animation: popInComment 0.4s ease-out forwards 1.0s; }
-        .step.active .fb-comment:nth-child(3) { animation: popInComment 0.4s ease-out forwards 1.7s; }
-
-        .fb-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #f9a8d4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 18px;
-            color: #9d174d;
-            flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .fb-avatar.blue { background-color: #bfdbfe; color: #1e40af; }
-        .fb-avatar.green { background-color: #bbf7d0; color: #166534; }
-        
-        .fb-content-wrapper {
-            flex: 1;
-        }
-        .fb-bubble {
-            background-color: #f3f4f6; /* Cinza claro do FB */
-            padding: 10px 14px;
-            border-radius: 18px;
-            position: relative;
-            display: inline-block;
-            max-width: 100%;
-        }
-        .fb-name {
-            font-weight: 700;
-            font-size: 14px;
-            color: #050505;
-            margin-bottom: 2px;
-        }
-        .fb-text {
-            font-size: 14px;
-            color: #050505;
-            line-height: 1.4;
-        }
-        .fb-actions {
-            font-size: 12px;
-            color: #65676b;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 4px;
-            margin-left: 12px;
-            position: relative;
-        }
-        .fb-actions span { cursor: pointer; }
-        .fb-actions span:hover { text-decoration: underline; }
-        .fb-time { font-weight: 400; }
-        
+        /* Comentários Estilo Facebook */
+        .fb-bubble { background-color: #f3f4f6; padding: 12px 16px; border-radius: 18px; position: relative; display: inline-block; width: 100%; }
         .fb-reactions {
-            position: absolute;
-            right: -20px;
-            top: -16px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 2px 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            font-size: 12px;
-            color: #65676b;
-            font-weight: 400;
-            z-index: 2;
-        }
-        .fb-reactions span {
-            font-size: 14px;
-            line-height: 1;
+            position: absolute; right: -5px; bottom: -12px; display: flex; align-items: center; gap: 4px;
+            background: #ffffff; border-radius: 14px; padding: 2px 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            font-size: 12px; color: #65676b; font-weight: 400; z-index: 2;
         }
         
-        /* DESIGN DA OFERTA (SUBSTITUINDO A IMAGEM) */
-        .offer-container {
-            text-align: center;
-            margin-bottom: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .offer-pill-blue {
-            background-color: #0ea5e9; /* Azul claro/Ciano similar ao da imagem */
-            color: white;
-            font-weight: 900;
-            text-transform: uppercase;
-            padding: 4px 16px;
-            border-radius: 100px;
-            font-size: 16px;
-            display: inline-block;
-            margin-bottom: -6px; 
-            position: relative;
-            z-index: 2;
-            letter-spacing: 0.5px;
-        }
-        .offer-product-name {
-            font-size: 34px;
-            font-weight: 900;
-            color: #db2777; /* Rosa da paleta */
-            text-transform: lowercase;
-            margin-bottom: 16px;
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-        .offer-course-bonus {
-            background-color: #0ea5e9;
-            color: white;
-            font-weight: 900;
-            text-transform: uppercase;
-            padding: 6px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            display: inline-block;
-            margin-bottom: -14px;
-            position: relative;
-            z-index: 2;
-        }
-        .offer-price-box {
-            border: 2px solid #22c55e; /* Borda Verde */
-            border-radius: 12px;
-            padding: 28px 16px 16px 16px;
-            width: 100%;
+        /* CAIXA DE PREÇO EXATA DA IMAGEM SOLICITADA */
+        .offer-box-replica {
             background-color: #ffffff;
+            border: 2px solid #fdf2f8; /* Borda rosa super clara quase invisível */
+            border-radius: 28px; /* Cantos arredondados iguais à imagem */
+            padding: 32px 24px;
+            box-shadow: 0 10px 40px -10px rgba(219, 39, 119, 0.08); /* Sombra suave */
+            display: inline-block;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            margin: 0 auto;
         }
-        .offer-old-price {
-            color: #db2777;
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: line-through;
-            margin-bottom: 2px;
+        .offer-box-replica .text-top {
+            color: #64748b; /* Cinza chumbo/azulado */
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            font-family: 'Inter', sans-serif;
         }
-        .offer-new-price {
-            color: #16a34a; /* Verde escuro para leitura */
-            font-size: 64px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 2px;
+        .offer-box-replica .text-price {
+            color: #d81b60; /* Rosa exato da imagem */
+            font-size: 72px; /* Número gigante */
+            font-weight: 800;
+            line-height: 1.1;
             letter-spacing: -2px;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
         }
-        .offer-avista {
-            color: #16a34a;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .offer-installments {
-            color: #db2777;
+        .offer-box-replica .text-bottom {
+            color: #94a3b8; /* Cinza claro */
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 500;
         }
-
-
-        /* Otimizações PageSpeed / CLS */
-        html {
-            text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        .container {
-            min-height: 100vh;
-        }
-
-        .image-container {
-            min-height: 300px;
-            align-items: center;
-        }
-
-        .image-container img {
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-        }
-
-        .guarantee-badge img {
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-        }
-
-        @media (max-width: 768px) {
-            .step.active.animate {
-                animation: none;
-            }
-        }
-
     </style>
-    
-    <!-- Meta Pixel Code: carregado depois da primeira renderização -->
+
+    <!-- Meta Pixel Code -->
     <script>
     window.addEventListener('load', function () {
         setTimeout(function () {
@@ -638,537 +126,502 @@
             fbq('init', '713072690328826');
             fbq('track', 'PageView');
             fbq('track', 'ViewContent', {value: 27.00, currency: 'BRL'});
-        }, 1200);
+        }, 1000);
     });
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=713072690328826&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=713072690328826&ev=PageView&noscript=1"/></noscript>
 </head>
-<body>
-    <div class="container">
-        
-        <!-- Step 0: Intro FOCADO EM CONVERSÃO -->
-        <div class="step active" id="step-0" data-quiz-step="1">
-            <div class="text-center mb-6">
-                <h1 class="title-italic">
-                    Como faturar de <br><span class="highlight-green">R$ 2.000 a R$ 5.000/mês</span><br> fazendo o <span class="highlight-pink">Balde de Pipoca Trufado</span> em casa.
-                </h1>
-                <p class="subtitle" style="margin-top: 12px; font-size: 15px;">
-                    O passo a passo para produzir e lucrar alto com os famosos "Baldes Trufados" usando apenas as panelas da sua cozinha.
-                </p>
-            </div>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
 
-            <div class="image-container">
-                <img src="imagem1.webp" alt="Balde de Pipoca Trufado" width="359" height="359" fetchpriority="high" loading="eager" decoding="async">
-            </div>
+    <!-- SECTION 1: HERO / PROMESSA (IMAGEM 1) -->
+    <header class="relative bg-brand-50 pt-16 pb-20 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div class="text-center md:text-left">
+                    <div class="inline-block bg-brand-100 text-brand-700 font-bold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand-200 uppercase tracking-wide">
+                        Pipoca Bolinha • Crocância 30 Dias • Vendas
+                    </div>
+                    
+                    <h1 class="font-heading text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
+                        Como faturar de <br>
+                        <span class="text-green-600">R$ 2.000 a R$ 5.000/mês</span><br>
+                        fazendo o <span class="text-brand-600">Balde Trufado</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto md:mx-0 font-medium leading-relaxed">
+                        Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
+                    </p>
 
-            <div class="blue-banner">
-                Pipoca Bolinha + Crocância 30 Dias + Vendas
-            </div>
+                    <div>
+                        <a href="#oferta" class="btn-success inline-block w-full sm:w-auto text-center font-black text-lg py-4 px-10 rounded-full animate-pulse-fast uppercase tracking-wide">
+                            SIM! QUERO APRENDER ISSO
+                        </a>
+                        <p class="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center md:justify-start gap-2">
+                            🔒 Compra Segura • Acesso Imediato
+                        </p>
+                    </div>
+                </div>
 
-            <div class="text-center mb-6">
-                <p class="description">
-                    Descubra como mulheres comuns estão lucrando alto vendendo o <strong>Balde de Pipoca Trufado</strong> mais desejado da internet.
-                </p>
-            </div>
-
-            <!-- ID E CLASSE DO BOTÃO DE START ATUALIZADOS AQUI -->
-            <button id="quiz-start" class="btn btn-primary mb-4 bnt-start" onclick="nextStep()">
-                SIM! QUERO APRENDER ISSO
-            </button>
-
-            <div class="text-center">
-                <p style="font-size: 12px; line-height: 16px; color: #6b7280; font-weight: 500;">
-                    Toque no botão acima para iniciar a apresentação e ver qual o próximo passo.
-                </p>
+                <!-- IMAGEM 1: Abertura e Desejo -->
+                <div class="relative mx-auto w-full max-w-sm md:max-w-md">
+                    <img src="imagem1.webp" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float" fetchpriority="high">
+                </div>
             </div>
         </div>
+    </header>
 
-        <!-- Step 1: Question 1 -->
-        <div class="step" id="step-1" data-quiz-step="2">
-            <div class="text-center mb-6">
-                <h1 class="question" style="font-size: 22px; line-height: 28px;">
-                    Você já faz <span class="pink-text">doces</span> pra vender ou esse seria o seu <span class="pink-text">começo</span>?
-                </h1>
-            </div>
-            <div class="image-container">
-                <img src="imagem2.webp" alt="Mulher fazendo doce" width="359" height="359" loading="eager" decoding="async">
-            </div>
-            <div class="text-center mb-4">
-                <p style="font-size: 14px; line-height: 17px; font-weight: 700; color: #4b5563;">ESCOLHA A OPÇÃO ABAIXO</p>
-            </div>
-            
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">😍</span>
-                    <span class="option-text">Sim, já vendo doces e quero lucrar ainda mais</span>
+    <!-- SECTION 2: CONEXÃO COM O PÚBLICO (IMAGEM 2) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col-reverse md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 relative">
+                    <!-- IMAGEM 2: Mulher fazendo doce (Do Quiz: Você faz doces ou é começo?) -->
+                    <img src="imagem2.webp" alt="Mulher fazendo doce" class="relative z-10 w-full max-w-md mx-auto" loading="lazy">
                 </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
-
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">😐</span>
-                    <span class="option-text">Faço por hobby ou pra família, mas quero começar a vender</span>
+                <div class="w-full md:w-1/2">
+                    <span class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2 block">Seja Iniciante ou Experiente</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
+                        A oportunidade perfeita para <span class="text-brand-600">começar do zero</span> ou escalar suas vendas.
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Seja você alguém que faz doces apenas por hobby para a família e quer ter uma renda extra, ou uma confeiteira que já vende e quer lucrar ainda mais: o Balde Trufado é a porta de entrada para ganhos rápidos.
+                    </p>
                 </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
-
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">🤔</span>
-                    <span class="option-text">Nunca fiz, quero aprender do zero pra ter renda extra</span>
-                </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
+            </div>
         </div>
+    </section>
 
-        <!-- Step 2: Question 2 -->
-        <div class="step" id="step-2" data-quiz-step="3">
-            <div class="text-center mb-6">
-                <h1 class="question" style="font-size: 22px; line-height: 28px;">
-                    Você já viu alguém vendendo essa <span class="pink-text">pipoca balde trufado</span> na <span class="highlight-pink">SUA CIDADE</span>?
-                </h1>
+    <!-- NOVA SEÇÃO: O QUE VOCÊ VAI APRENDER (Baseado no image_b16504.png) -->
+    <!-- Fundo levemente creme para destacar as caixas brancas -->
+    <section class="py-20 bg-[#fbf9f6]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+                    Você vai aprender muito mais que <span class="text-[#c1121f]">receitas</span>
+                </h2>
             </div>
-            <div class="image-container">
-                <img src="imagem3.webp" alt="Baldes de pipoca em camadas" width="359" height="359" loading="eager" decoding="async">
-            </div>
-            
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">👑</span>
-                    <span class="option-text">Nunca vi! Vou ser a primeira e nadar de braçada.</span>
+
+            <!-- Grid de 2 colunas no PC, 1 coluna no celular -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                
+                <!-- Item 1 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Estouro e seleção do milho secreto</span>
                 </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
 
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">😐</span>
-                    <span class="option-text">Vi sim, mas é bem raro por aqui.</span>
+                <!-- Item 2 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Pipoqueira elétrica, manual ou de panela</span>
                 </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
 
-            <button type="button" class="option-btn" onclick="selectOption(this)">
-                <div class="option-content">
-                    <span class="option-emoji">🤔</span>
-                    <span class="option-text">Já vi, mas sei que posso fazer com mais qualidade.</span>
+                <!-- Item 3 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Armazenamento e validade (Crocância 30 Dias)</span>
                 </div>
-                <span class="option-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </span>
-            </button>
+
+                <!-- Item 4 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">6+ técnicas de caramelização blindada</span>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">4 técnicas de separação + híbrida</span>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">O Segredo das caldas brilhantes de vitrine</span>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Precificação Exata + Planilha Automática</span>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Embalagens e a Montagem Irresistível no Balde</span>
+                </div>
+
+                <!-- Item 9 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Instagram e vendas profissionais por catálogo</span>
+                </div>
+
+                <!-- Item 10 -->
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-bold text-gray-800 text-[15px]">Scripts, mensagens e vendas no Automático</span>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <!-- Step 3: Info 1 -->
-        <div class="step" id="step-3" data-quiz-step="4">
-            <div class="text-center mb-6">
-                <h1 style="font-size: 22px; line-height: 28px; font-weight: 800; margin-bottom: 16px; color: #1f2937;">
-                    O Segredo da <span class="highlight-pink">Crocância Extrema</span>
-                </h1>
-            </div>
-            <div class="image-container">
-                <img src="imagem4.webp" alt="Fazendo caramelo na panela" width="359" height="359" loading="eager" decoding="async">
-            </div>
-            <div class="text-center mb-6">
-                <p class="description" style="margin-bottom: 16px;">
-                    Você não precisa comprar pipoqueira elétrica ou máquinas caras. <strong style="color: #1f2937;">Tudo é feito na panela de alumínio que você já tem em casa.</strong>
-                </p>
-                <p class="description">
-                    Vou te ensinar o segredo da <strong class="pink-text">cristalização perfeita</strong>. O truque exato que blinda a pipoca com caramelo sem queimar, mantendo ela <strong style="font-size: 17px; color: #db2777; background: #fdf2f8; padding: 2px 4px; border-radius: 4px; display: inline-block; margin-top: 4px;">CROCANTE POR ATÉ 30 DIAS NA GELADEIRA!</strong>
-                </p>
-            </div>
-            <button class="btn btn-primary" onclick="nextStep()">
-                🍿 Quero ver como funciona!
-            </button>
-        </div>
-
-        <!-- Step 4: Info 2 -->
-        <div class="step" id="step-4" data-quiz-step="5">
-            <div class="text-center mb-6">
-                <h1 style="font-size: 22px; line-height: 28px; font-weight: 800; color: #1f2937;">O visual <span class="pink-text">vende sozinho!</span></h1>
-            </div>
-            <div class="image-container">
-                <img src="imagem5.webp" alt="Chocolate escorrendo no balde" width="359" height="359" loading="eager" decoding="async">
-            </div>
-            <div class="text-center mb-6">
-                <p class="description">
-                    <strong style="color: #db2777;">Você tem vergonha de vender?</strong> Esqueça isso. A montagem do <strong>Balde de Pipoca Trufado</strong> em camadas faz as pessoas <strong>comerem com os olhos</strong>.
-                </p>
+    <!-- SECTION 6: BÔNUS INCLUSOS (IMAGEM 6) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight uppercase">
+                    Você ainda vai receber <br><span class="text-brand-600">Todos esses Bônus</span>
+                </h2>
+                <p class="text-lg text-gray-600 font-medium">Garanta sua vaga hoje e leve esse arsenal para multiplicar suas vendas.</p>
             </div>
 
-            <!-- NOVA CAIXA DE DESTAQUE: MENSAGENS PRONTAS -->
-            <div style="background-color: #d1fae5; border: 2px dashed #059669; border-radius: 12px; padding: 16px; margin-bottom: 24px; text-align: left;">
-                <p style="font-size: 15px; line-height: 22px; color: #064e3b; font-weight: 600;">
-                    ✅ <strong style="font-weight: 900; color: #047857; font-size: 16px;">E O MELHOR:</strong> Você vai receber mensagens estratégicas <span style="background-color: #059669; color: white; padding: 2px 6px; border-radius: 4px; font-weight: 900;">PRONTAS</span> pra você copiar e colar com imagens já feitas prontas pra serem disparadas e você fazer <strong style="font-size: 18px; color: #047857; text-transform: uppercase; text-decoration: underline;">vendas no automático!</strong>
-                </p>
-            </div>
-
-            <button class="btn btn-primary" onclick="nextStep()">
-                🤩 Quero aprender a fazer esse balde!
-            </button>
-        </div>
-
-        <!-- Step 5: Testimonials (COMENTÁRIOS DO FACEBOOK) -->
-        <div class="step" id="step-5" data-quiz-step="6">
-            <div class="text-center mb-6">
-                <h1 style="font-size: 22px; line-height: 28px; font-weight: 800; color: #059669;">Parabéns! Você está no caminho certo.</h1>
-            </div>
-            <div class="text-center mb-4">
-                <p class="description">
-                    Milhares de mulheres começaram exatamente como você — com dúvida, panelas simples e vontade de fazer dinheiro rápido.
-                </p>
-                <p class="description" style="margin-top: 8px;">
-                    Veja abaixo o que estão falando sobre a técnica do <strong style="color: #1f2937;">Balde de Pipoca Trufado:</strong>
-                </p>
-            </div>
-            
-            <!-- LISTA DE COMENTÁRIOS ESTILO FB -->
-            <div class="fb-comments-container">
-                <!-- Comentário 1 -->
-                <div class="fb-comment">
-                    <div class="fb-avatar">P</div>
-                    <div class="fb-content-wrapper">
-                        <div class="fb-bubble">
-                            <div class="fb-name">Patrícia Gomes</div>
-                            <div class="fb-text">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade, deixei na geladeira e levou 3 dias e não murchou um pingo. Vendi TUDO no grupo de alunas! 🙏🏻</div>
-                            <div class="fb-reactions">
-                                <span>👍</span><span>❤️</span> <span>89</span>
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="w-full lg:w-1/2">
+                    <!-- IMAGEM 6: Mockup dos bônus (Do Quiz: Área de Vendas) -->
+                    <img src="imagem6.webp" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy">
+                </div>
+                
+                <div class="w-full lg:w-1/2 space-y-4">
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                        <div class="text-3xl">💬</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Script de Vendas Automáticas</h4>
+                            <p class="text-gray-600 text-sm mt-1">Mensagens persuasivas prontas. É só copiar, colar no WhatsApp e ver os pedidos chegando.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                        <div class="text-3xl">🎨</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Pack de Adesivos Profissionais</h4>
+                            <p class="text-gray-600 text-sm mt-1">Templates no Canva para imprimir e colar nos baldes. Sua pipoca com cara de marca famosa.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                        <div class="text-3xl">📊</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Calculadora de Lucro</h4>
+                            <p class="text-gray-600 text-sm mt-1">Planilha simples onde você digita os ingredientes e ela te dá o preço exato para não ter prejuízo.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-5 bg-brand-50 rounded-2xl border-2 border-brand-300 shadow-sm">
+                        <div class="text-3xl">🎁</div>
+                        <div>
+                            <h4 class="font-black text-brand-800 text-lg uppercase">8 Cursos Extras Gratuitos</h4>
+                            <p class="text-brand-700 text-sm mt-1 font-medium mb-2">Domine a confeitaria e lucre mais com:</p>
+                            <div class="grid grid-cols-2 gap-1 text-xs font-bold text-brand-900">
+                                <span>• Bolos de Pote</span>
+                                <span>• Copo da Felicidade</span>
+                                <span>• Brigadeiros</span>
+                                <span>• Trufas Lucrativas</span>
+                                <span>• Caseirinhos</span>
+                                <span>• Brownie</span>
+                                <span>• Geladinho</span>
+                                <span>• Ovos de Páscoa</span>
                             </div>
                         </div>
-                        <div class="fb-actions">
-                            <span>Curtir</span>
-                            <span>Responder</span>
-                            <span class="fb-time">2 h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: PROVA SOCIAL E COMUNIDADE (IMAGEM 7) -->
+    <section class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Quem aplica, <span class="text-brand-600">vende tudo!</span></h2>
+                <p class="text-gray-600 text-lg">Veja o que as alunas estão falando na nossa comunidade.</p>
+            </div>
+
+            <!-- Comentários Facebook Originados do Quiz -->
+            <div class="space-y-6 max-w-2xl mx-auto mb-16">
+                <!-- Comentário 1 -->
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-300 text-brand-900 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">P</div>
+                    <div class="flex-1">
+                        <div class="fb-bubble text-left shadow-sm">
+                            <p class="font-bold text-gray-900 text-[14px] mb-1">Patrícia Gomes</p>
+                            <p class="text-gray-800 text-[14px] leading-snug">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade, deixei na geladeira e levou 3 dias e não murchou um pingo. Vendi TUDO no grupo de alunas! 🙏🏻</p>
+                            <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>89</span></div>
+                        </div>
+                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
+                            <span class="cursor-pointer hover:underline">Curtir</span>
+                            <span class="cursor-pointer hover:underline">Responder</span>
+                            <span class="font-normal">2 h</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Comentário 2 -->
-                <div class="fb-comment">
-                    <div class="fb-avatar blue">L</div>
-                    <div class="fb-content-wrapper">
-                        <div class="fb-bubble">
-                            <div class="fb-name">Luciana Marques</div>
-                            <div class="fb-text">Aquela montagem do Balde é covardia 😍 Tinha mt vergonha de vender, mas só usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora pras mães do condomínio.</div>
-                            <div class="fb-reactions">
-                                <span>❤️</span><span>😮</span> <span>42</span>
-                            </div>
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-800 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">L</div>
+                    <div class="flex-1">
+                        <div class="fb-bubble text-left shadow-sm">
+                            <p class="font-bold text-gray-900 text-[14px] mb-1">Luciana Marques</p>
+                            <p class="text-gray-800 text-[14px] leading-snug">Aquela montagem do Balde é covardia 😍 Tinha mt vergonha de vender, mas só usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora pras mães do condomínio.</p>
+                            <div class="fb-reactions"><span>❤️</span><span>😮</span> <span>42</span></div>
                         </div>
-                        <div class="fb-actions">
-                            <span>Curtir</span>
-                            <span>Responder</span>
-                            <span class="fb-time">4 h</span>
+                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
+                            <span class="cursor-pointer hover:underline">Curtir</span>
+                            <span class="cursor-pointer hover:underline">Responder</span>
+                            <span class="font-normal">4 h</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Comentário 3 -->
-                <div class="fb-comment">
-                    <div class="fb-avatar green">A</div>
-                    <div class="fb-content-wrapper">
-                        <div class="fb-bubble">
-                            <div class="fb-name">Ana Clara Silva</div>
-                            <div class="fb-text">Eu morria de medo de queimar o caramelo 😂 O ponto exato que vcs ensinam salvou minha vida. Saiu perfeito na primeira tentativa na minha panela velhinha! O balde trufado tá um sucesso aqui no bairro.</div>
-                            <div class="fb-reactions">
-                                <span>👍</span><span>❤️</span> <span>156</span>
-                            </div>
+                <div class="flex gap-3">
+                    <div class="w-10 h-10 rounded-full bg-green-200 text-green-800 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">A</div>
+                    <div class="flex-1">
+                        <div class="fb-bubble text-left shadow-sm">
+                            <p class="font-bold text-gray-900 text-[14px] mb-1">Ana Clara Silva</p>
+                            <p class="text-gray-800 text-[14px] leading-snug">Eu morria de medo de queimar o caramelo 😂 O ponto exato que vcs ensinam salvou minha vida. Saiu perfeito na primeira tentativa na minha panela velhinha! O balde trufado tá um sucesso aqui no bairro.</p>
+                            <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>156</span></div>
                         </div>
-                        <div class="fb-actions">
-                            <span>Curtir</span>
-                            <span>Responder</span>
-                            <span class="fb-time">5 h</span>
+                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
+                            <span class="cursor-pointer hover:underline">Curtir</span>
+                            <span class="cursor-pointer hover:underline">Responder</span>
+                            <span class="font-normal">5 h</span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <button class="btn btn-primary" onclick="nextStep()">
-                Ver Meu Plano
-            </button>
-        </div>
-
-        <!-- Step 6: Sales Page -->
-        <div class="step" id="step-6" data-quiz-step="7">
-            <div class="text-center mb-4">
-                <div class="badge">
-                    <span style="font-size: 20px;">🎉</span>
-                    <span class="badge-text">PARABÉNS</span>
-                </div>
-            </div>
             
-            <div class="text-center mb-6">
-                <h1 style="font-size: 24px; line-height: 28px; font-weight: 800; margin-bottom: 8px; color: #1f2937;">
-                    Seu plano está <span style="color: #059669;">pronto.</span>
-                </h1>
-                <p style="font-size: 15px; line-height: 18px; color: #6b7280; font-weight: 600;">Leia com atenção</p>
-            </div>
-            
-            <div class="text-center mb-6">
-                <p class="description" style="font-size: 16px;">
-                    🎉 <strong>Você está prestes a aprender como transformar milho em baldes de pipoca trufados e faturar mais de R$ 3.000 por mês sem sair de casa!</strong>
-                </p>
-            </div>
-            
-            <div class="green-box">
-                <p class="green-text">
-                    ✅ <strong>E mais:</strong> você foi selecionada para receber nossos templates, mensagens prontas de vendas automáticas e ferramentas secretas de precificação!
-                </p>
-            </div>
-            
-            <div class="mb-6">
-                <h2 style="font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 20px; color: #1f2937; text-transform: uppercase; font-style: italic; line-height: 1.1;">VOCÊ VAI APRENDER A FAZER <br><span class="highlight-pink">ESSAS OBRAS DE ARTE:</span></h2>
-                <div class="benefits-list">
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>O Milho Secreto:</strong> Descubra qual é o grão exato que estoura em formato de bolinha perfeita, igual de cinema, e nunca quebra.</div>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>O Segredo das Caldas:</strong> Como criar caldas grossas e brilhantes que transformam uma pipoca comum em um verdadeiro doce trufado de vitrine.</div>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>Crocância 30 Dias:</strong> A técnica de cristalização que blinda a pipoca e impede que ela murche na geladeira, acabando com os prejuízos.</div>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>A Montagem Irresistível:</strong> Aprenda a fazer as famosas camadas no balde transparente que fazem as pessoas comerem com os olhos.</div>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>Vendas no Automático:</strong> Os scripts e imagens prontas para você copiar, colar e vender pelo WhatsApp sem esforço.</div>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="check-icon">✓</span>
-                        <div><strong>100% do material disponível</strong> para você acessar quantas vezes quiser – <strong>Acesso Imediato.</strong></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="urgency-text">
-                Restam apenas <span class="red-text">6 vagas</span> com os Bônus Exclusivos.
-            </div>
-            
-            <div class="mb-6">
-                <div class="text-center mb-4">
-                    <img src="imagem6.webp" alt="Mockup dos bônus" width="359" height="359" loading="lazy" decoding="async" style="max-width: 100%; height: auto; border-radius: 12px;; object-fit: contain">
-                </div>
-                <div class="text-center mb-4">
-                    <h2 style="font-size: 20px; font-weight: 900; color: #1f2937; text-transform: uppercase; font-style: italic;">Você ainda vai receber <br><span class="highlight-pink">DE BÔNUS:</span></h2>
-                </div>
-                
-                <div class="bonus-premium-container">
-                    <div class="bonus-card">
-                        <div class="bonus-icon">💬</div>
-                        <div class="bonus-content">
-                            <div class="bonus-title">Script de Vendas Automáticas</div>
-                            <div class="bonus-desc">Mensagens persuasivas prontas. É só copiar, colar no WhatsApp e ver os pedidos chegando na mesma hora.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="bonus-card">
-                        <div class="bonus-icon">🎨</div>
-                        <div class="bonus-content">
-                            <div class="bonus-title">Pack de Adesivos Profissionais</div>
-                            <div class="bonus-desc">Templates no Canva para você imprimir e colar nos seus baldes. Sua pipoca com cara de marca famosa.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="bonus-card">
-                        <div class="bonus-icon">📊</div>
-                        <div class="bonus-content">
-                            <div class="bonus-title">Calculadora de Lucro Automática</div>
-                            <div class="bonus-desc">Planilha simples onde você digita o valor dos ingredientes e ela te dá o preço de venda exato para não ter prejuízo.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="bonus-card" style="align-items: flex-start;">
-                        <div class="bonus-icon">🎁</div>
-                        <div class="bonus-content">
-                            <div class="bonus-title">8 Cursos Extras Totalmente Gratuitos</div>
-                            <div class="bonus-desc">
-                                <p style="margin-bottom: 8px;">Para você dominar a confeitaria e multiplicar ainda mais a sua renda, liberamos o acesso a mais 8 formações completas:</p>
-                                <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-weight: 700; color: #db2777; font-size: 12px; line-height: 1.2;">
-                                    <li>• Bolos de Pote</li>
-                                    <li>• Copo da Felicidade</li>
-                                    <li>• Brigadeiros Gourmet</li>
-                                    <li>• Trufas Lucrativas</li>
-                                    <li>• Caseirinhos</li>
-                                    <li>• Brownie Lucrativo</li>
-                                    <li>• Geladinho Gourmet</li>
-                                    <li>• Ovos de Páscoa</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ - DÚVIDAS FREQUENTES -->
-            <div class="faq-container">
-                <h3 class="faq-header">Ainda tem dúvidas?</h3>
-                
-                <div class="faq-item">
-                    <div class="faq-q">Preciso de máquina para estourar?</div>
-                    <div class="faq-a">Não! O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha. O segredo está na técnica, não na panela.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-q">Como vou receber o acesso?</div>
-                    <div class="faq-a">Imediatamente após a confirmação do pagamento, você receberá um e-mail com seu login e senha para acessar todo o material pelo celular ou computador.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-q">E se eu tiver vergonha de vender?</div>
-                    <div class="faq-a">É por isso que entregamos o Script de Vendas e as Fotos Prontas! Você não precisa "oferecer". Basta postar as imagens e o texto que te daremos, e o visual fará o cliente te pedir.</div>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <div class="text-center mb-4">
-                    <img src="imagem7.webp" alt="Oferta especial" width="359" height="359" loading="lazy" decoding="async" style="max-width: 100%; height: auto; border-radius: 12px;; object-fit: contain">
-                </div>
-            </div>
-            
-            <!-- CAIXA DE PREÇO E OFERTA 100% CÓDIGO (SUBSTITUIU A IMAGEM) -->
-            <div class="offer-container">
-                <div class="offer-pill-blue">BALDES DE</div>
-                <div class="offer-product-name">pipoca gourmet</div>
-                
-                <div class="offer-course-bonus">Curso Completo + BÔNUS</div>
-                <div class="offer-price-box">
-                    <div class="offer-old-price">DE R$ 197,00</div>
-                    <div class="offer-new-price">R$ 27,00</div>
-                    <div class="offer-avista">à vista!</div>
-                    <div class="offer-installments">Ou em 5x de R$ 5,89</div>
-                </div>
-            </div>
-            
-            <!-- ID DO BOTÃO DE CHECKOUT ATUALIZADO AQUI -->
-            <a id="quiz-cta-final" href="https://mariih.mycartpanda.com/checkout/210008855:1" target="_blank" class="btn btn-success mb-4">
-                COMPRAR AGORA!
-            </a>
-            
-            <div class="guarantee-text">
-                Esta compra 100% segura, 7 dias de garantia 
-            </div>
-            
-            <div class="testimonial-section">
-                <h3 class="testimonial-title">Quem faz recomenda!</h3>
-                <p class="community-text">Comunidade:</p>
-                <p class="community-name">Baldes Trufados Lucrativos</p>
-                <p class="stats-text">
-                    <strong>94%</strong> das alunas <strong>indicam e recomendam</strong> a comunidade e curso em suas redes sociais e para conhecidos.
-                </p>
-            </div>
-            
-            <div class="guarantee-badge">
-                <img src="imagem8.webp" alt="Garantia de 7 dias" width="100" height="100" loading="lazy" decoding="async">
+            <div class="text-center">
+                <p class="text-brand-600 font-bold mb-4 uppercase tracking-wider text-sm">94% das alunas recomendam a comunidade</p>
+                <!-- IMAGEM 7: Comunidade Especial (Do Quiz: Oferta Especial) -->
+                <img src="imagem7.webp" alt="Comunidade ativa" class="w-full max-w-md mx-auto" loading="lazy">
             </div>
         </div>
-    </div>
-    
-    <script>
-        let currentStep = 0;
+    </section>
 
-        function showStep(stepNumber, animate) {
-            const stepEl = document.getElementById('step-' + stepNumber);
-            if (!stepEl) return;
+    <!-- SECTION 8: OFERTA FINAL E GARANTIA (IMAGEM 8) -->
+    <section id="oferta" class="py-20 bg-brand-50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            
+            <h2 class="font-heading text-4xl md:text-5xl font-black text-[#111827] mb-2 tracking-tight uppercase">
+                SEU PLANO ESTÁ <span class="text-[#0fa958]">PRONTO</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 font-medium">Curso Completo + Todos os Bônus Premium Inclusos</p>
+            
+            <!-- LISTA DO QUE A PESSOA VAI RECEBER (REFORÇO DE OFERTA) -->
+            <div class="max-w-md mx-auto bg-white rounded-[24px] p-7 sm:p-8 mb-8 shadow-[0_8px_30px_rgba(219,39,119,0.08)] border border-brand-100 text-left">
+                <h4 class="font-bold text-[#1e293b] mb-6 text-center text-[15px] uppercase tracking-wide">
+                    Tudo que você está levando agora:
+                </h4>
+                <ul class="space-y-3.5 text-[14px] md:text-[15px] font-semibold text-[#334155]">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Estouro e seleção do milho secreto</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Pipoqueira elétrica, manual ou de panela</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Armazenamento e validade (Crocância 30 Dias)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>6+ técnicas de caramelização blindada</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>4 técnicas de separação + híbrida</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>O Segredo das caldas brilhantes de vitrine</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Precificação Exata + Planilha Automática</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Embalagens e a Montagem Irresistível no Balde</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Instagram e vendas profissionais por catálogo</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> 
+                        <span>Scripts, mensagens e vendas no Automático</span>
+                    </li>
+                </ul>
+            </div>
 
-            stepEl.classList.add('active');
-            if (animate) {
-                stepEl.classList.add('animate');
-            } else {
-                stepEl.classList.remove('animate');
-            }
-            window.scrollTo(0, 0);
-        }
+            <!-- CAIXA DE PREÇO EXATA BASEADA NO PRINT DA IMAGEM -->
+            <div class="bg-white rounded-[28px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] max-w-sm mx-auto mb-8">
+                <p class="text-[#64748b] font-medium text-xl mb-1">Por apenas</p>
+                <div class="text-[#d81b60] font-bold text-[64px] leading-none mb-3 tracking-tight font-heading">
+                    R$ 19,90
+                </div>
+                <p class="text-[#94a3b8] font-medium text-[15px]">
+                    <span class="line-through">De R$ 197,00</span> (pagamento único)
+                </p>
+            </div>
+            
+            <!-- BOTÃO CTA E TEXTO DE SEGURANÇA -->
+            <div class="max-w-sm mx-auto">
+                <a href="https://mariih.mycartpanda.com/checkout/210008855:1" target="_blank" class="block w-full bg-[#0fa958] hover:bg-[#0c8b48] text-white font-bold text-xl py-5 rounded-2xl shadow-[0_8px_20px_rgba(15,169,88,0.25)] transition-transform transform hover:scale-105 tracking-wide mb-3">
+                    COMPRAR AGORA
+                </a>
+                <p class="text-sm text-gray-500 font-semibold flex items-center justify-center gap-1.5">
+                    🔒 Ambiente 100% Seguro e Criptografado
+                </p>
+            </div>
 
-        function nextStep() {
-            const currentStepEl = document.getElementById('step-' + currentStep);
-            if (!currentStepEl) return;
+            <!-- IMAGEM 8: Selo de Garantia -->
+            <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 max-w-2xl mx-auto">
+                <img src="imagem8.webp" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy">
+                <div class="text-left">
+                    <h4 class="font-bold text-gray-900 text-lg mb-1">Garantia Incondicional de 7 Dias</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            currentStepEl.classList.add('step-out');
+    <!-- SECTION 9: FAQ (PERGUNTAS FREQUENTES) -->
+    <section class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">Perguntas Frequentes</h2>
+                <p class="text-lg text-gray-600 mt-2 font-medium">Tudo o que você precisa saber antes de começar.</p>
+            </div>
 
-            setTimeout(function () {
-                currentStepEl.classList.remove('active');
-                currentStepEl.classList.remove('animate');
-                currentStepEl.classList.remove('step-out');
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
+                        Preciso de máquinas caras para estourar a pipoca?
+                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
+                            <!-- Ícone de Mais (+) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <!-- Ícone de Menos (-) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
+                        <strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha. O segredo está na técnica exata de cristalização que vamos te ensinar, e não em equipamentos caros.
+                    </div>
+                </details>
 
-                currentStep = currentStep + 1;
-                showStep(currentStep, true);
-            }, 200);
-        }
+                <!-- FAQ Item 2 -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
+                        Como e quando vou receber o acesso?
+                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
+                        <strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado (Pix e Cartão aprovam na hora), você receberá um e-mail com o seu link de acesso, login e senha para acessar todo o material.
+                    </div>
+                </details>
 
-        function selectOption(btnElement) {
-            btnElement.classList.add('selected');
+                <!-- FAQ Item 3 -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
+                        E se eu tiver vergonha ou não souber vender?
+                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
+                        É exatamente por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Você não precisa "oferecer". Basta copiar nossos textos, usar as fotos que ensinamos a tirar, colar no seu WhatsApp/Instagram e o visual irresistível fará o cliente te pedir.
+                    </div>
+                </details>
 
-            const parentStep = btnElement.closest('.step');
-            if (parentStep) {
-                parentStep.querySelectorAll('.option-btn').forEach(function (btn) {
-                    btn.disabled = true;
-                    btn.style.cursor = 'not-allowed';
-                });
-            }
+                <!-- FAQ Item 4 -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
+                        Os ingredientes são difíceis de achar?
+                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
+                        De forma alguma! Você encontra tudo em qualquer supermercado ou atacadista da sua cidade. Inclusive, vamos te ensinar qual é a marca específica do "milho secreto" que estoura redondinho e nunca quebra.
+                    </div>
+                </details>
 
-            setTimeout(function () {
-                nextStep();
+                <!-- FAQ Item 5 -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
+                        Posso assistir e estudar pelo celular?
+                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
+                        Sim! A nossa área de membros é 100% otimizada para você acessar de onde estiver. Você pode assistir as aulas, baixar as planilhas e ler os materiais de apoio usando apenas o seu celular com internet.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
 
-                setTimeout(function () {
-                    if (parentStep) {
-                        parentStep.querySelectorAll('.option-btn').forEach(function (btn) {
-                            btn.disabled = false;
-                            btn.style.cursor = 'pointer';
-                        });
-                    }
-                    btnElement.classList.remove('selected');
-                }, 500);
-            }, 120);
-        }
+    <!-- FOOTER LEGAL -->
+    <footer class="bg-gray-900 py-10 text-center border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <p class="text-sm text-gray-400 font-medium mb-4">© 2026. Todos os direitos reservados.</p>
+            <p class="text-[11px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                Este site não faz parte do site do Facebook ou da Meta Platforms Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da Meta Platforms, Inc. Os resultados podem variar de pessoa para pessoa. Nenhuma informação contida neste produto deve ser interpretada como uma afirmação da obtenção de resultados.
+            </p>
+        </div>
+    </footer>
 
-        function preloadQuizImages() {
-            ['imagem2.webp', 'imagem3.webp', 'imagem4.webp', 'imagem5.webp'].forEach(function (src) {
-                const img = new Image();
-                img.decoding = 'async';
-                img.src = src;
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            showStep(0, false);
-
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(preloadQuizImages, { timeout: 2500 });
-            } else {
-                setTimeout(preloadQuizImages, 1500);
-            }
-        });
-    </script>
 </body>
 </html>
