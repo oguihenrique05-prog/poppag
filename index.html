@@ -7,12 +7,13 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Usando Poppins para modernidade/conversão e Inter para leitura fluida -->
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Imagem 1 no LCP para carregar rápido na primeira tela -->
+    <!-- Preload da primeira imagem -->
     <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,7 +31,7 @@
                             300: '#f9a8d4',
                             400: '#f472b6',
                             500: '#ec4899',
-                            600: '#db2777', // Rosa Principal
+                            600: '#db2777',
                             700: '#be185d',
                             800: '#9d174d',
                             900: '#831843',
@@ -54,7 +55,7 @@
     <style>
         body { background-color: #ffffff; color: #1f2937; overflow-x: hidden; }
         
-        /* Botão de Compra Verde - Foco em Alta Conversão */
+        /* Botão de Compra - Foco em Alta Conversão */
         .btn-success {
             background-color: #059669;
             color: white;
@@ -76,7 +77,7 @@
         }
     </style>
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code Otimizado (Disparo imediato) -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -88,55 +89,52 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '713072690328826');
         fbq('track', 'PageView');
-        // PIXEL ATUALIZADO PARA O VALOR NOVO ESTRATÉGICO DE R$ 10,00
         fbq('track', 'ViewContent', {value: 10.00, currency: 'BRL'});
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=713072690328826&ev=PageView&noscript=1"/></noscript>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- SECTION 1: HERO / PROMESSA (IMAGEM 1) -->
-    <header class="relative bg-brand-50 pt-16 pb-20 overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- SECTION 1: HERO / PROMESSA -->
+    <header class="relative bg-brand-50 pt-10 pb-16 overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <!-- Tag Pipoca -->
+            <div class="inline-block bg-brand-100 text-brand-700 font-bold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand-200 uppercase tracking-wide mt-4">
+                Pipoca Bolinha • Crocância 30 Dias • Vendas
+            </div>
+            
+            <!-- Headline Matadora -->
+            <h1 class="font-heading text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
+                Como faturar de <br>
+                <span class="text-green-600">R$ 2.000 a R$ 5.000/mês</span><br>
+                fazendo o <span class="text-brand-600">Balde Trufado</span>
+            </h1>
+            
+            <!-- IMAGEM 1 POSICIONADA EXATAMENTE AQUI -->
+            <div class="relative mx-auto w-full max-w-sm md:max-w-md mb-6">
+                <img src="imagem1.webp" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float rounded-2xl shadow-lg" fetchpriority="high">
+            </div>
+
+            <!-- Subheadline -->
+            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto font-medium leading-relaxed">
+                Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
+            </p>
+
+            <!-- Área de Botão e Oferta -->
+            <div class="max-w-sm mx-auto flex flex-col items-center">
+                <!-- Tag de Oferta de 10 Reais -->
+                <div class="w-full bg-[#10b981] text-white font-bold text-[13px] py-1.5 px-4 rounded-t-xl mb-[-10px] z-0 flex items-center justify-center gap-1.5 uppercase tracking-wider animate-pulse">
+                    <span>🔥 Oferta Especial: Apenas</span><span class="inline-block ml-2">R$ 10,00</span>
+                </div>
                 
-                <div class="text-center md:text-left">
-                    <div class="inline-block bg-brand-100 text-brand-700 font-bold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand-200 uppercase tracking-wide">
-                        Pipoca Bolinha • Crocância 30 Dias • Vendas
-                    </div>
-                    
-                    <h1 class="font-heading text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
-                        Como faturar de <br>
-                        <span class="text-green-600">R$ 2.000 a R$ 5.000/mês</span><br>
-                        fazendo o <span class="text-brand-600">Balde Trufado</span>
-                    </h1>
-                    
-                    <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto md:mx-0 font-medium leading-relaxed">
-                        Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
-                    </p>
-
-                    <div>
-                        <!-- TAG DE 10 REAIS ADICIONADA AQUI -->
-                        <div class="mb-4">
-                            <span class="inline-block bg-[#10b981] text-white font-bold px-5 py-2.5 rounded-lg text-sm shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-bounce border border-[#059669]">
-                                🔥 OFERTA ESPECIAL: APENAS R$ 10,00
-                            </span>
-                        </div>
-                        
-                        <!-- BOTÃO ÂNCORA DIRETO PARA A OFERTA -->
-                        <a href="#oferta" class="btn-success inline-block w-full sm:w-auto text-center font-black text-lg py-4 px-10 rounded-full animate-pulse-fast uppercase tracking-wide">
-                            SIM! QUERO APRENDER ISSO
-                        </a>
-                        <p class="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center md:justify-start gap-2">
-                            🔒 Compra Segura • Acesso Imediato
-                        </p>
-                    </div>
-                </div>
-
-                <!-- IMAGEM 1: Abertura e Desejo -->
-                <div class="relative mx-auto w-full max-w-sm md:max-w-md">
-                    <img src="imagem1.webp" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float" fetchpriority="high" onerror="this.src='https://placehold.co/600x800/fce7f3/db2777?text=Balde+Trufado'">
-                </div>
+                <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
+                    SIM! QUERO APRENDER ISSO
+                </a>
+                
+                <p class="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center gap-2">
+                    🔒 Compra Segura • Acesso Imediato
+                </p>
             </div>
         </div>
     </header>
@@ -146,8 +144,7 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col-reverse md:flex-row gap-12 items-center">
                 <div class="w-full md:w-1/2 relative">
-                    <!-- IMAGEM 2: Mulher fazendo doce -->
-                    <img src="imagem2.webp" alt="Mulher fazendo doce" class="relative z-10 w-full max-w-md mx-auto" loading="lazy" onerror="this.src='https://placehold.co/600x600/fce7f3/db2777?text=Fazendo+Doces'">
+                    <img src="imagem2.webp" alt="Mulher fazendo doce" class="relative z-10 w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
                 </div>
                 <div class="w-full md:w-1/2">
                     <span class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2 block">Seja Iniciante ou Experiente</span>
@@ -162,7 +159,7 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: O QUE VOCÊ VAI APRENDER -->
+    <!-- SECTION 3: O QUE VOCÊ VAI APRENDER -->
     <section class="py-20 bg-[#fbf9f6]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -171,102 +168,93 @@
                 </h2>
             </div>
 
-            <!-- Grid de 2 colunas no PC, 1 coluna no celular -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                
-                <!-- Item 1 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <!-- Grid de Módulos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-12">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Estouro e seleção do milho secreto</span>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Pipoqueira elétrica, manual ou de panela</span>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Armazenamento e validade (Crocância 30 Dias)</span>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">6+ técnicas de caramelização blindada</span>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">4 técnicas de separação + híbrida</span>
                 </div>
 
-                <!-- Item 6 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">O Segredo das caldas brilhantes de vitrine</span>
                 </div>
 
-                <!-- Item 7 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Precificação Exata + Planilha Automática</span>
                 </div>
 
-                <!-- Item 8 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Embalagens e a Montagem Irresistível no Balde</span>
                 </div>
 
-                <!-- Item 9 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Instagram e vendas profissionais por catálogo</span>
                 </div>
 
-                <!-- Item 10 -->
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-bold text-gray-800 text-[15px]">Scripts, mensagens e vendas no Automático</span>
                 </div>
-
             </div>
-            
-            <!-- NOVO BOTÃO ADICIONADO AQUI CONFORME SOLICITADO -->
-            <div class="mt-14 text-center">
-                <a href="#oferta" class="btn-success inline-block w-full sm:w-auto text-center font-black text-lg py-4 px-10 rounded-full animate-pulse-fast uppercase tracking-wide shadow-lg hover:shadow-xl transition-all">
-                    QUERO APRENDER TUDO ISSO POR R$ 10
+
+            <!-- NOVO BOTÃO ABAIXO DA GRADE -->
+            <div class="max-w-sm mx-auto flex flex-col items-center">
+                <div class="w-full bg-[#10b981] text-white font-bold text-[13px] py-1.5 px-4 rounded-t-xl mb-[-10px] z-0 flex items-center justify-center gap-1.5 uppercase tracking-wider animate-pulse">
+                    <span>🔥 Oferta Especial: Apenas</span><span class="inline-block ml-2">R$ 10,00</span>
+                </div>
+                <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
+                    SIM! QUERO APRENDER ISSO
                 </a>
             </div>
-            
+
         </div>
     </section>
 
-    <!-- SECTION 6: BÔNUS INCLUSOS (IMAGEM 6) -->
+    <!-- SECTION 4: BÔNUS INCLUSOS -->
     <section class="py-20 bg-white">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -275,40 +263,37 @@
                 </h2>
                 <p class="text-lg text-gray-600 font-medium">Garanta sua vaga hoje e leve esse arsenal para multiplicar suas vendas.</p>
             </div>
-
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="w-full lg:w-1/2">
-                    <img src="imagem6.webp" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy" onerror="this.src='https://placehold.co/600x600/fce7f3/db2777?text=Mockup+Bonus'">
+                    <img src="imagem6.webp" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy">
                 </div>
-                
                 <div class="w-full lg:w-1/2 space-y-4">
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
                         <div class="text-3xl">💬</div>
                         <div>
                             <h4 class="font-bold text-gray-900 text-lg">Script de Vendas Automáticas</h4>
                             <p class="text-gray-600 text-sm mt-1">Mensagens persuasivas prontas. É só copiar, colar no WhatsApp e ver os pedidos chegando.</p>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
                         <div class="text-3xl">🎨</div>
                         <div>
                             <h4 class="font-bold text-gray-900 text-lg">Pack de Adesivos Profissionais</h4>
-                            <p class="text-gray-600 text-sm mt-1">Templates no Canva para imprimir e colar nos baldes. Sua pipoca com cara de marca famosa.</p>
+                            <p class="text-gray-600 text-sm mt-1">Templates no Canva para imprimir e colar nos baldes.</p>
                         </div>
                     </div>
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 transition hover:border-brand-300">
+                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
                         <div class="text-3xl">📊</div>
                         <div>
                             <h4 class="font-bold text-gray-900 text-lg">Calculadora de Lucro</h4>
-                            <p class="text-gray-600 text-sm mt-1">Planilha simples onde você digita os ingredientes e ela te dá o preço exato para não ter prejuízo.</p>
+                            <p class="text-gray-600 text-sm mt-1">Planilha simples onde você digita os ingredientes e ela te dá o preço exato.</p>
                         </div>
                     </div>
                     <div class="flex gap-4 p-5 bg-brand-50 rounded-2xl border-2 border-brand-300 shadow-sm">
                         <div class="text-3xl">🎁</div>
                         <div>
                             <h4 class="font-black text-brand-800 text-lg uppercase">8 Cursos Extras Gratuitos</h4>
-                            <p class="text-brand-700 text-sm mt-1 font-medium mb-2">Domine a confeitaria e lucre mais com:</p>
-                            <div class="grid grid-cols-2 gap-1 text-xs font-bold text-brand-900">
+                            <div class="grid grid-cols-2 gap-1 text-xs font-bold text-brand-900 mt-2">
                                 <span>• Bolos de Pote</span>
                                 <span>• Copo da Felicidade</span>
                                 <span>• Brigadeiros</span>
@@ -325,23 +310,21 @@
         </div>
     </section>
 
-    <!-- SECTION 7: PROVA SOCIAL E COMUNIDADE (IMAGEM 7) -->
+    <!-- SECTION 5: PROVA SOCIAL E COMUNIDADE -->
     <section class="py-20 bg-gray-50 border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Quem aplica, <span class="text-brand-600">vende tudo!</span></h2>
-                <p class="text-gray-600 text-lg">Veja o que as alunas estão falando na nossa comunidade.</p>
             </div>
-
-            <!-- Comentários Facebook Originados do Quiz -->
+            
             <div class="space-y-6 max-w-2xl mx-auto mb-16">
                 <!-- Comentário 1 -->
                 <div class="flex gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-300 text-brand-900 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">P</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-300 text-brand-900 flex items-center justify-center font-bold text-lg flex-shrink-0">P</div>
                     <div class="flex-1">
                         <div class="fb-bubble text-left shadow-sm">
                             <p class="font-bold text-gray-900 text-[14px] mb-1">Patrícia Gomes</p>
-                            <p class="text-gray-800 text-[14px] leading-snug">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade, deixei na geladeira e levou 3 dias e não murchou um pingo. Vendi TUDO no grupo de alunas! 🙏🏻</p>
+                            <p class="text-gray-800 text-[14px] leading-snug">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade e levou 3 dias e não murchou um pingo.</p>
                             <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>89</span></div>
                         </div>
                         <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
@@ -351,14 +334,13 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Comentário 2 -->
                 <div class="flex gap-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-800 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">L</div>
+                    <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-800 flex items-center justify-center font-bold text-lg flex-shrink-0">L</div>
                     <div class="flex-1">
                         <div class="fb-bubble text-left shadow-sm">
                             <p class="font-bold text-gray-900 text-[14px] mb-1">Luciana Marques</p>
-                            <p class="text-gray-800 text-[14px] leading-snug">Aquela montagem do Balde é covardia 😍 Tinha mt vergonha de vender, mas só usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora pras mães do condomínio.</p>
+                            <p class="text-gray-800 text-[14px] leading-snug">Aquela montagem do Balde é covardia 😍 usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora.</p>
                             <div class="fb-reactions"><span>❤️</span><span>😮</span> <span>42</span></div>
                         </div>
                         <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
@@ -368,93 +350,25 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Comentário 3 -->
-                <div class="flex gap-3">
-                    <div class="w-10 h-10 rounded-full bg-green-200 text-green-800 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">A</div>
-                    <div class="flex-1">
-                        <div class="fb-bubble text-left shadow-sm">
-                            <p class="font-bold text-gray-900 text-[14px] mb-1">Ana Clara Silva</p>
-                            <p class="text-gray-800 text-[14px] leading-snug">Eu morria de medo de queimar o caramelo 😂 O ponto exato que vcs ensinam salvou minha vida. Saiu perfeito na primeira tentativa na minha panela velhinha! O balde trufado tá um sucesso aqui no bairro.</p>
-                            <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>156</span></div>
-                        </div>
-                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
-                            <span class="cursor-pointer hover:underline">Curtir</span>
-                            <span class="cursor-pointer hover:underline">Responder</span>
-                            <span class="font-normal">5 h</span>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <div class="text-center">
                 <p class="text-brand-600 font-bold mb-4 uppercase tracking-wider text-sm">94% das alunas recomendam a comunidade</p>
-                <!-- IMAGEM 7: Comunidade Especial -->
-                <img src="imagem7.webp" alt="Comunidade ativa" class="w-full max-w-md mx-auto" loading="lazy" onerror="this.src='https://placehold.co/600x400/fce7f3/db2777?text=Comunidade'">
+                <img src="imagem7.webp" alt="Comunidade ativa" class="w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- SECTION 8: OFERTA FINAL E GARANTIA (IMAGEM 8) -->
+    <!-- SECTION 6: OFERTA FINAL E GARANTIA (R$ 10) -->
     <section id="oferta" class="py-20 bg-brand-50 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            
             <h2 class="font-heading text-4xl md:text-5xl font-black text-[#111827] mb-2 tracking-tight uppercase">
                 SEU PLANO ESTÁ <span class="text-[#0fa958]">PRONTO</span>
             </h2>
             <p class="text-lg md:text-xl text-gray-600 mb-8 font-medium">Curso Completo + Todos os Bônus Premium Inclusos</p>
             
-            <!-- LISTA DO QUE A PESSOA VAI RECEBER (REFORÇO DE OFERTA) -->
-            <div class="max-w-md mx-auto bg-white rounded-[24px] p-7 sm:p-8 mb-8 shadow-[0_8px_30px_rgba(219,39,119,0.08)] border border-brand-100 text-left">
-                <h4 class="font-bold text-[#1e293b] mb-6 text-center text-[15px] uppercase tracking-wide">
-                    Tudo que você está levando agora:
-                </h4>
-                <ul class="space-y-3.5 text-[14px] md:text-[15px] font-semibold text-[#334155]">
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Estouro e seleção do milho secreto</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Pipoqueira elétrica, manual ou de panela</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Armazenamento e validade (Crocância 30 Dias)</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>6+ técnicas de caramelização blindada</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>4 técnicas de separação + híbrida</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>O Segredo das caldas brilhantes de vitrine</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Precificação Exata + Planilha Automática</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Embalagens e a Montagem Irresistível no Balde</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Instagram e vendas profissionais por catálogo</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        <span>Scripts, mensagens e vendas no Automático</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- CAIXA DE PREÇO ATUALIZADA PARA 10 REAIS -->
-            <div class="bg-white rounded-[28px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] max-w-sm mx-auto mb-8">
+            <!-- CAIXA DE PREÇO ATUALIZADA -->
+            <div class="bg-white rounded-[28px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] max-w-sm mx-auto mb-8 border border-gray-100">
                 <p class="text-[#64748b] font-medium text-xl mb-1">Por apenas</p>
                 <div class="text-[#d81b60] font-bold text-[64px] leading-none mb-3 tracking-tight font-heading">
                     R$ 10,00
@@ -464,7 +378,7 @@
                 </p>
             </div>
             
-            <!-- BOTÃO CTA E TEXTO DE SEGURANÇA -->
+            <!-- BOTÃO CTA CHECKOUT -->
             <div class="max-w-sm mx-auto">
                 <a href="https://mariih.mycartpanda.com/checkout/210959205:1" target="_blank" class="block w-full bg-[#0fa958] hover:bg-[#0c8b48] text-white font-bold text-xl py-5 rounded-2xl shadow-[0_8px_20px_rgba(15,169,88,0.25)] transition-transform transform hover:scale-105 tracking-wide mb-3">
                     COMPRAR AGORA
@@ -474,9 +388,9 @@
                 </p>
             </div>
 
-            <!-- IMAGEM 8: Selo de Garantia -->
+            <!-- Garantia -->
             <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 max-w-2xl mx-auto">
-                <img src="imagem8.webp" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy" onerror="this.src='https://placehold.co/100x100/fce7f3/db2777?text=Garantia'">
+                <img src="imagem8.webp" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy">
                 <div class="text-left">
                     <h4 class="font-bold text-gray-900 text-lg mb-1">Garantia Incondicional de 7 Dias</h4>
                     <p class="text-gray-600 text-sm leading-relaxed">O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
@@ -485,104 +399,35 @@
         </div>
     </section>
 
-    <!-- SECTION 9: FAQ (PERGUNTAS FREQUENTES) -->
+    <!-- SECTION 7: FAQ (PERGUNTAS FREQUENTES) -->
     <section class="py-20 bg-white border-t border-gray-100">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">Perguntas Frequentes</h2>
-                <p class="text-lg text-gray-600 mt-2 font-medium">Tudo o que você precisa saber antes de começar.</p>
             </div>
-
             <div class="space-y-4">
-                <!-- FAQ Item 1 -->
                 <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
                         Preciso de máquinas caras para estourar a pipoca?
-                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
-                            <!-- Ícone de Mais (+) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <!-- Ícone de Menos (-) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                            </svg>
-                        </span>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        <strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha. O segredo está na técnica exata de cristalização que vamos te ensinar, e não em equipamentos caros.
+                        <strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha.
                     </div>
                 </details>
-
-                <!-- FAQ Item 2 -->
                 <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
                         Como e quando vou receber o acesso?
-                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                            </svg>
-                        </span>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        <strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado (Pix e Cartão aprovam na hora), você receberá um e-mail com o seu link de acesso, login e senha para acessar todo o material.
+                        <strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado, você receberá um e-mail com o seu link de acesso.
                     </div>
                 </details>
-
-                <!-- FAQ Item 3 -->
                 <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
                     <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
                         E se eu tiver vergonha ou não souber vender?
-                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                            </svg>
-                        </span>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        É exatamente por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Você não precisa "oferecer". Basta copiar nossos textos, usar as fotos que ensinamos a tirar, colar no seu WhatsApp/Instagram e o visual irresistível fará o cliente te pedir.
-                    </div>
-                </details>
-
-                <!-- FAQ Item 4 -->
-                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
-                        Os ingredientes são difíceis de achar?
-                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        De forma alguma! Você encontra tudo em qualquer supermercado ou atacadista da sua cidade. Inclusive, vamos te ensinar qual é a marca específica do "milho secreto" que estoura redondinho e nunca quebra.
-                    </div>
-                </details>
-
-                <!-- FAQ Item 5 -->
-                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
-                        Posso assistir e estudar pelo celular?
-                        <span class="relative h-5 w-5 shrink-0 text-brand-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        Sim! A nossa área de membros é 100% otimizada para você acessar de onde estiver. Você pode assistir as aulas, baixar as planilhas e ler os materiais de apoio usando apenas o seu celular com internet.
+                        É por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Basta copiar nossos textos, usar as fotos e colar no seu WhatsApp/Instagram.
                     </div>
                 </details>
             </div>
@@ -594,10 +439,9 @@
         <div class="max-w-5xl mx-auto px-4">
             <p class="text-sm text-gray-400 font-medium mb-4">© 2026. Todos os direitos reservados.</p>
             <p class="text-[11px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
-                Este site não faz parte do site do Facebook ou da Meta Platforms Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da Meta Platforms, Inc. Os resultados podem variar de pessoa para pessoa. Nenhuma informação contida neste produto deve ser interpretada como uma afirmação da obtenção de resultados.
+                Este site não faz parte do site do Facebook ou da Meta Platforms Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da Meta Platforms, Inc.
             </p>
         </div>
     </footer>
-
 </body>
 </html>
