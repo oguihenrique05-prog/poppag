@@ -75,6 +75,12 @@
             background: #ffffff; border-radius: 14px; padding: 2px 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             font-size: 12px; color: #65676b; font-weight: 400; z-index: 2;
         }
+
+        /* Notificação de Vendas (Prova Social) */
+        .notification-show {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
     </style>
 
     <!-- Meta Pixel Code Otimizado (Disparo imediato) -->
@@ -95,6 +101,22 @@
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white">
 
+    <!-- BARRA DE ESCASSEZ DINÂMICA (TOP BAR) -->
+    <div class="bg-[#dc2626] text-white text-center py-2.5 px-4 text-sm sm:text-[15px] font-bold tracking-wide shadow-md relative z-50 uppercase flex justify-center items-center gap-2">
+        <span class="animate-pulse flex-shrink-0">⚠️</span> 
+        <span>Valor promocional liberado somente hoje: <span id="data-dinamica" class="text-[#fef08a] font-black underline decoration-2 underline-offset-2"></span></span>
+    </div>
+
+    <!-- Script para puxar a data atual -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const dataHoje = new Date();
+            // Formata a data para o padrão brasileiro (ex: 20/06/2026)
+            const dataFormatada = dataHoje.toLocaleDateString('pt-BR');
+            document.getElementById('data-dinamica').textContent = dataFormatada;
+        });
+    </script>
+
     <!-- SECTION 1: HERO / PROMESSA -->
     <header class="relative bg-brand-50 pt-10 pb-16 overflow-hidden">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -113,7 +135,8 @@
             
             <!-- IMAGEM 1 POSICIONADA EXATAMENTE AQUI -->
             <div class="relative mx-auto w-full max-w-sm md:max-w-md mb-6">
-                <img src="imagem1.webp" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float rounded-2xl shadow-lg" fetchpriority="high">
+                <!-- Fallback de imagem adicionado caso a webp não exista -->
+                <img src="imagem1.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x400/fce7f3/db2777?text=Balde+de+Pipoca'" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float rounded-2xl shadow-lg" fetchpriority="high">
             </div>
 
             <!-- Subheadline -->
@@ -123,9 +146,9 @@
 
             <!-- Área de Botão e Oferta -->
             <div class="max-w-sm mx-auto flex flex-col items-center">
-                <!-- Tag de Oferta de 10 Reais -->
-                <div class="w-full bg-[#10b981] text-white font-bold text-[13px] py-1.5 px-4 rounded-t-xl mb-[-10px] z-0 flex items-center justify-center gap-1.5 uppercase tracking-wider animate-pulse">
-                    <span>🔥 Oferta Especial: Apenas</span><span class="inline-block ml-2">R$ 10,00</span>
+                <!-- Tag de Oferta Separada -->
+                <div class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white font-bold text-[13px] py-1.5 px-5 rounded-full mb-4 shadow-md uppercase tracking-wider animate-pulse">
+                    <span class="text-base">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span>
                 </div>
                 
                 <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
@@ -139,30 +162,16 @@
         </div>
     </header>
 
-    <!-- SECTION 2: CONEXÃO COM O PÚBLICO (IMAGEM 2) -->
-    <section class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col-reverse md:flex-row gap-12 items-center">
-                <div class="w-full md:w-1/2 relative">
-                    <img src="imagem2.webp" alt="Mulher fazendo doce" class="relative z-10 w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
-                </div>
-                <div class="w-full md:w-1/2">
-                    <span class="text-brand-500 font-bold tracking-wider uppercase text-sm mb-2 block">Seja Iniciante ou Experiente</span>
-                    <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
-                        A oportunidade perfeita para <span class="text-brand-600">começar do zero</span> ou escalar suas vendas.
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Seja você alguém que faz doces apenas por hobby para a família e quer ter uma renda extra, ou uma confeiteira que já vende e quer lucrar ainda mais: o Balde Trufado é a porta de entrada para ganhos rápidos.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: O QUE VOCÊ VAI APRENDER -->
+    <!-- SECTION 3: O QUE VOCÊ VAI APRENDER (COM IMAGEM REPOSICIONADA) -->
     <section class="py-20 bg-[#fbf9f6]">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
+                
+                <!-- Imagem da mulher fazendo doce (reposicionada da antiga seção 2) -->
+                <div class="relative w-full max-w-md mx-auto mb-10">
+                    <img src="imagem2.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x400/fdf2f8/db2777?text=Mulher+Fazendo+Doce'" alt="Mulher fazendo doce" class="relative z-10 w-full rounded-2xl shadow-lg border-4 border-white" loading="lazy">
+                </div>
+
                 <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
                     Você vai aprender muito mais que <span class="text-[#c1121f]">receitas</span>
                 </h2>
@@ -242,9 +251,10 @@
             </div>
 
             <!-- NOVO BOTÃO ABAIXO DA GRADE -->
-            <div class="max-w-sm mx-auto flex flex-col items-center">
-                <div class="w-full bg-[#10b981] text-white font-bold text-[13px] py-1.5 px-4 rounded-t-xl mb-[-10px] z-0 flex items-center justify-center gap-1.5 uppercase tracking-wider animate-pulse">
-                    <span>🔥 Oferta Especial: Apenas</span><span class="inline-block ml-2">R$ 10,00</span>
+            <div class="max-w-sm mx-auto flex flex-col items-center mt-4">
+                <!-- Tag de Oferta Separada -->
+                <div class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white font-bold text-[13px] py-1.5 px-5 rounded-full mb-4 shadow-md uppercase tracking-wider animate-pulse">
+                    <span class="text-base">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span>
                 </div>
                 <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
                     SIM! QUERO APRENDER ISSO
@@ -265,7 +275,8 @@
             </div>
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="w-full lg:w-1/2">
-                    <img src="imagem6.webp" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy">
+                    <!-- Fallback de imagem adicionado -->
+                    <img src="imagem6.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x300/fdf2f8/db2777?text=Mockup+Bonus'" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy">
                 </div>
                 <div class="w-full lg:w-1/2 space-y-4">
                     <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
@@ -354,7 +365,8 @@
             
             <div class="text-center">
                 <p class="text-brand-600 font-bold mb-4 uppercase tracking-wider text-sm">94% das alunas recomendam a comunidade</p>
-                <img src="imagem7.webp" alt="Comunidade ativa" class="w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
+                <!-- Fallback de imagem adicionado -->
+                <img src="imagem7.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x200/fdf2f8/db2777?text=Comunidade+Ativa'" alt="Comunidade ativa" class="w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
             </div>
         </div>
     </section>
@@ -441,7 +453,8 @@
 
             <!-- Garantia -->
             <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 max-w-2xl mx-auto">
-                <img src="imagem8.webp" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy">
+                <!-- Fallback de imagem adicionado -->
+                <img src="imagem8.webp" onerror="this.onerror=null; this.src='https://placehold.co/100x100/fdf2f8/db2777?text=Garantia'" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy">
                 <div class="text-left">
                     <h4 class="font-bold text-gray-900 text-lg mb-1">Garantia Incondicional de 7 Dias</h4>
                     <p class="text-gray-600 text-sm leading-relaxed">O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
@@ -494,5 +507,67 @@
             </p>
         </div>
     </footer>
+
+    <!-- POPUP DE NOTIFICAÇÃO DE COMPRA (PROVA SOCIAL DINÂMICA) -->
+    <div id="purchase-notification" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 p-3 flex items-center gap-3 z-[100] transform transition-all duration-500 translate-y-24 opacity-0 pointer-events-none max-w-[280px]">
+        <div class="bg-green-100 p-2 rounded-full flex-shrink-0">
+            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <div>
+            <p class="text-sm text-gray-800 font-medium leading-tight">
+                <span id="notify-name" class="font-bold text-gray-900">Marta</span> acabou de comprar
+            </p>
+            <p class="text-[11px] text-gray-500 mt-0.5 font-medium">
+                Há <span id="notify-time">1 minuto</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DAS NOTIFICAÇÕES -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Lista de nomes e tempos para gerar aleatoriedade
+            const buyers = [
+                { name: 'Marta', time: '1 minuto' },
+                { name: 'Márcia', time: '4 minutos' },
+                { name: 'Juliana', time: '12 minutos' },
+                { name: 'Ana Paula', time: '23 minutos' },
+                { name: 'Fernanda', time: '5 minutos' },
+                { name: 'Camila', time: '2 minutos' },
+                { name: 'Amanda', time: '8 minutos' },
+                { name: 'Letícia', time: 'agora mesmo' },
+                { name: 'Bruna', time: '15 minutos' },
+                { name: 'Patrícia', time: '3 minutos' }
+            ];
+
+            const notificationEl = document.getElementById('purchase-notification');
+            const nameEl = document.getElementById('notify-name');
+            const timeEl = document.getElementById('notify-time');
+
+            function showNextNotification() {
+                // Escolhe uma compradora aleatória da lista
+                const buyer = buyers[Math.floor(Math.random() * buyers.length)];
+                
+                // Atualiza os textos
+                nameEl.textContent = buyer.name;
+                timeEl.textContent = buyer.time;
+
+                // Mostra a notificação fazendo ela subir e ficar opaca
+                notificationEl.classList.add('notification-show');
+
+                // Esconde a notificação após 5 segundos
+                setTimeout(() => {
+                    notificationEl.classList.remove('notification-show');
+                }, 5000);
+            }
+
+            // Espera 3 segundos após o site abrir para mostrar a primeira
+            setTimeout(() => {
+                showNextNotification();
+                // Depois, continua mostrando uma nova a cada 15 segundos
+                setInterval(showNextNotification, 15000);
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
