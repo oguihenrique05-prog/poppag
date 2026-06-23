@@ -1,567 +1,803 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balde de Pipoca Trufado - Fature de R$ 2.000 a R$ 5.000/mês</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Preload da primeira imagem -->
-    <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fdf2f8',
-                            100: '#fce7f3',
-                            200: '#fbcfe8',
-                            300: '#f9a8d4',
-                            400: '#f472b6',
-                            500: '#ec4899',
-                            600: '#db2777',
-                            700: '#be185d',
-                            800: '#9d174d',
-                            900: '#831843',
-                        }
-                    },
-                    animation: {
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balde de Pipoca Trufado - Fature de R$ 2.000 a R$ 5.000/mês</title>
 
-    <style>
-        body { background-color: #ffffff; color: #1f2937; overflow-x: hidden; }
-        
-        /* Botão de Compra - Foco em Alta Conversão */
-        .btn-success {
-            background-color: #059669;
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
-            transition: all 0.3s ease;
-        }
-        .btn-success:hover {
-            background-color: #047857;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
-        }
+  <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
 
-        /* Comentários Estilo Facebook */
-        .fb-bubble { background-color: #f3f4f6; padding: 12px 16px; border-radius: 18px; position: relative; display: inline-block; width: 100%; }
-        .fb-reactions {
-            position: absolute; right: -5px; bottom: -12px; display: flex; align-items: center; gap: 4px;
-            background: #ffffff; border-radius: 14px; padding: 2px 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            font-size: 12px; color: #65676b; font-weight: 400; z-index: 2;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-        /* Notificação de Vendas (Prova Social) */
-        .notification-show {
-            transform: translateY(0) !important;
-            opacity: 1 !important;
-        }
-    </style>
+  <style>
+    :root {
+      --brand-50: #fdf2f8;
+      --brand-100: #fce7f3;
+      --brand-200: #fbcfe8;
+      --brand-300: #f9a8d4;
+      --brand-500: #ec4899;
+      --brand-600: #db2777;
+      --brand-700: #be185d;
+      --brand-800: #9d174d;
+      --brand-900: #831843;
+      --green: #059669;
+      --green-dark: #047857;
+      --text: #1f2937;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --red: #c1121f;
+    }
 
-    <!-- LowTrack Pixel Code -->
-    <script>
-        window.pixelId = "lt_px_bd0cf4bb175d";
-        var a = document.createElement("script");
-        a.setAttribute("async", "");
-        a.setAttribute("defer", "");
-        a.setAttribute("src", "https://lowtrack.com.br/pixel.js");
-        document.head.appendChild(a);
-    </script>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      color: var(--text);
+      overflow-x: hidden;
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    strong { font-weight: 800; }
+
+    .font-heading { font-family: 'Poppins', 'Inter', Arial, Helvetica, sans-serif; }
+    .container { width: 100%; max-width: 1024px; margin: 0 auto; padding: 0 16px; }
+    .container-sm { width: 100%; max-width: 768px; margin: 0 auto; padding: 0 16px; }
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .relative { position: relative; }
+    .z-10 { z-index: 10; }
+
+    .topbar {
+      background: #dc2626;
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 6px rgba(0,0,0,.10);
+      position: relative;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .topbar .date {
+      color: #fef08a;
+      font-weight: 900;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+
+    .hero {
+      background: var(--brand-50);
+      padding: 40px 0 64px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-inner { max-width: 768px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 10; text-align: center; }
+    .hero-tag {
+      display: inline-block;
+      margin: 16px 0 24px;
+      background: var(--brand-100);
+      color: var(--brand-700);
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: 1px solid var(--brand-200);
+      text-transform: uppercase;
+      letter-spacing: .025em;
+    }
+    .headline {
+      margin: 0 0 24px;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      font-size: 40px;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      font-weight: 900;
+      color: var(--gray-900);
+    }
+    .green-text { color: #16a34a; }
+    .brand-text { color: var(--brand-600); }
+    .red-text { color: var(--red); }
+
+    .hero-img-wrap { width: 100%; max-width: 384px; margin: 0 auto 24px; position: relative; }
+    .hero-img {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+      animation: float 3s ease-in-out infinite;
+      will-change: transform;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .subheadline {
+      font-size: 18px;
+      color: var(--gray-700);
+      margin: 0 auto 32px;
+      max-width: 672px;
+      font-weight: 500;
+      line-height: 1.65;
+    }
+    .cta-area { max-width: 384px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+    .offer-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--brand-600);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 6px 20px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,.12);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      animation: pulse 1.5s cubic-bezier(.4,0,.6,1) infinite;
+    }
+    @keyframes pulse { 50% { opacity: .5; } }
+    .btn-success {
+      background-color: var(--green);
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
+      transition: transform .3s ease, background-color .3s ease, box-shadow .3s ease;
+      width: 100%;
+      text-align: center;
+      font-weight: 900;
+      font-size: 18px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: .025em;
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+      display: block;
+    }
+    .btn-success:hover {
+      background-color: var(--green-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.5), 0 8px 10px -6px rgba(5, 150, 105, 0.1);
+    }
+    .safe-text {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin: 16px 0 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .section { padding: 80px 0; }
+    .learn { background: #fbf9f6; }
+    .white { background: #fff; }
+    .gray { background: var(--gray-50); border-top: 1px solid var(--gray-100); }
+    .section-title {
+      margin: 0;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      font-size: 32px;
+      line-height: 1.18;
+      letter-spacing: -.025em;
+      font-weight: 900;
+      color: var(--gray-900);
+    }
+    .section-title.mb { margin-bottom: 16px; }
+    .section-subtitle { font-size: 18px; color: var(--gray-600); font-weight: 500; margin: 0; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .learn-img-wrap { width: 100%; max-width: 448px; margin: 0 auto 40px; position: relative; }
+    .learn-img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+      border: 4px solid #fff;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 896px;
+      margin: 0 auto 48px;
+    }
+    .module-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      padding: 20px 24px;
+      border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      border: 1px solid var(--gray-100);
+    }
+    .check-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #fef2f2;
+      color: #dc2626;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .module-card span:last-child {
+      font-weight: 800;
+      color: var(--gray-800);
+      font-size: 15px;
+    }
+
+    .bonus-row {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      align-items: center;
+    }
+    .bonus-img-col, .bonus-list { width: 100%; }
+    .bonus-img { width: 100%; max-width: 448px; margin: 0 auto; height: auto; object-fit: contain; }
+    .bonus-list { display: flex; flex-direction: column; gap: 16px; }
+    .bonus-card {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      background: var(--gray-50);
+      border-radius: 16px;
+      border: 1px solid var(--gray-100);
+    }
+    .bonus-card.premium { background: var(--brand-50); border: 2px solid var(--brand-300); box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+    .bonus-icon { font-size: 30px; line-height: 1; flex-shrink: 0; }
+    .bonus-card h4 { margin: 0; color: var(--gray-900); font-weight: 800; font-size: 18px; }
+    .bonus-card p { margin: 4px 0 0; color: var(--gray-600); font-size: 14px; line-height: 1.45; }
+    .bonus-card.premium h4 { color: var(--brand-800); font-weight: 900; text-transform: uppercase; }
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--brand-900);
+      margin-top: 8px;
+    }
+
+    .comments { max-width: 672px; margin: 0 auto 64px; display: flex; flex-direction: column; gap: 24px; }
+    .comment { display: flex; gap: 12px; }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .avatar.pink { background: var(--brand-300); color: var(--brand-900); }
+    .avatar.blue { background: #bfdbfe; color: #1e40af; }
+    .comment-body { flex: 1; }
+    .fb-bubble {
+      background-color: #f3f4f6;
+      padding: 12px 16px;
+      border-radius: 18px;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      text-align: left;
+    }
+    .fb-bubble .name { font-weight: 800; color: var(--gray-900); font-size: 14px; margin: 0 0 4px; }
+    .fb-bubble .text { color: var(--gray-800); font-size: 14px; line-height: 1.35; margin: 0; }
+    .fb-reactions {
+      position: absolute; right: -5px; bottom: -12px; display: flex; align-items: center; gap: 4px;
+      background: #ffffff; border-radius: 14px; padding: 2px 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      font-size: 12px; color: #65676b; font-weight: 400; z-index: 2;
+    }
+    .comment-actions { font-size: 11px; color: var(--gray-500); font-weight: 700; margin: 6px 0 0 12px; display: flex; gap: 12px; }
+    .community-label { color: var(--brand-600); font-weight: 800; margin: 0 0 16px; text-transform: uppercase; letter-spacing: .05em; font-size: 14px; }
+    .community-img { width: 100%; max-width: 448px; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); }
+
+    .offer-section { background: var(--brand-50); position: relative; overflow: hidden; }
+    .offer-title {
+      font-family: 'Poppins', 'Inter', sans-serif;
+      font-size: 40px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -.025em;
+      color: #111827;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    .ready { color: #0fa958; }
+    .offer-desc { font-size: 18px; color: var(--gray-600); margin: 0 0 32px; font-weight: 500; }
+    .receive-box {
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(4px);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.05);
+      max-width: 768px;
+      margin: 0 auto 32px;
+      border: 1px solid #fff;
+    }
+    .receive-label { color: #d81b60; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .2em; margin: 0 0 20px; }
+    .receive-grid { display: grid; grid-template-columns: 1fr; gap: 12px; text-align: left; }
+    .receive-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    }
+    .receive-check { color: #0fa958; font-weight: 900; font-size: 18px; line-height: 1; margin-top: 2px; }
+    .receive-item span:last-child { font-weight: 800; color: var(--gray-800); font-size: 15px; line-height: 1.35; }
+    .price-box {
+      background: #fff;
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.06);
+      max-width: 384px;
+      margin: 0 auto 32px;
+      border: 1px solid var(--gray-100);
+    }
+    .price-box .label { color: #64748b; font-weight: 500; font-size: 20px; margin: 0 0 4px; }
+    .price {
+      color: #d81b60;
+      font-weight: 800;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -.025em;
+      font-family: 'Poppins', 'Inter', sans-serif;
+      margin-bottom: 12px;
+    }
+    .old-price { color: #94a3b8; font-weight: 500; font-size: 15px; margin: 0; }
+    .line-through { text-decoration: line-through; }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      background: #0fa958;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(15,169,88,.25);
+      transition: transform .2s ease, background .2s ease;
+      letter-spacing: .025em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .checkout-btn:hover { background: #0c8b48; transform: scale(1.05); }
+    .secure { color: var(--gray-500); font-weight: 700; font-size: 14px; display: flex; justify-content: center; align-items: center; gap: 6px; margin: 0; }
+    .guarantee { margin: 64px auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; max-width: 672px; }
+    .guarantee img { width: 96px; height: auto; object-fit: contain; flex-shrink: 0; }
+    .guarantee h4 { margin: 0 0 4px; color: var(--gray-900); font-weight: 800; font-size: 18px; }
+    .guarantee p { margin: 0; color: var(--gray-600); font-size: 14px; line-height: 1.65; }
+
+    .faq { border-top: 1px solid var(--gray-100); }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    details {
+      background: var(--gray-50);
+      border-radius: 16px;
+      border: 1px solid var(--gray-100);
+      transition: border-color .2s ease;
+    }
+    details:hover { border-color: var(--brand-300); }
+    details summary {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 20px;
+      color: var(--gray-900);
+      font-weight: 800;
+      font-size: 18px;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details div { padding: 0 20px 20px; color: var(--gray-600); line-height: 1.65; font-size: 15px; }
+
+    footer {
+      background: #111827;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid #1f2937;
+    }
+    footer .copy { color: #9ca3af; font-weight: 500; font-size: 14px; margin: 0 0 16px; }
+    footer .legal { color: #6b7280; font-size: 11px; max-width: 768px; margin: 0 auto; line-height: 1.65; }
+
+    #purchase-notification {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      border: 1px solid var(--gray-100);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      transform: translateY(96px);
+      opacity: 0;
+      pointer-events: none;
+      max-width: 280px;
+      transition: transform .5s ease, opacity .5s ease;
+    }
+    .notification-show { transform: translateY(0) !important; opacity: 1 !important; }
+    .notification-icon { background: #dcfce7; padding: 8px; border-radius: 999px; flex-shrink: 0; color: #16a34a; display: flex; }
+    .notification-title { font-size: 14px; color: var(--gray-800); font-weight: 500; line-height: 1.25; margin: 0; }
+    .notification-title strong { color: var(--gray-900); font-weight: 800; }
+    .notification-time { font-size: 11px; color: var(--gray-500); margin: 2px 0 0; font-weight: 500; }
+
+    @media (min-width: 640px) {
+      .topbar { font-size: 15px; }
+      .headline { font-size: 48px; }
+    }
+
+    @media (min-width: 768px) {
+      .hero-img-wrap { max-width: 448px; }
+      .section-title { font-size: 36px; }
+      .offer-title { font-size: 48px; }
+      .offer-desc { font-size: 20px; }
+      .receive-box { padding: 28px; }
+      .receive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .receive-item.full { grid-column: span 2; }
+      .guarantee { flex-direction: row; text-align: left; }
+      .faq summary { font-size: 17px; }
+    }
+
+    @media (min-width: 1024px) {
+      .bonus-row { flex-direction: row; }
+      .bonus-img-col, .bonus-list { width: 50%; }
+      #purchase-notification { bottom: 24px; left: 24px; }
+    }
+
+    @media (min-width: 768px) {
+      .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 380px) {
+      .headline { font-size: 34px; }
+      .price { font-size: 56px; }
+      .topbar { font-size: 12px; }
+    }
+  </style>
+
+  <!-- LowTrack Pixel Code -->
+  <script>
+      window.pixelId = "lt_px_bd0cf4bb175d";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://lowtrack.com.br/pixel.js");
+      document.head.appendChild(a);
+  </script>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white">
+<body>
 
-    <!-- BARRA DE ESCASSEZ DINÂMICA (TOP BAR) -->
-    <div class="bg-[#dc2626] text-white text-center py-2.5 px-4 text-sm sm:text-[15px] font-bold tracking-wide shadow-md relative z-50 uppercase flex justify-center items-center gap-2">
-        <span class="animate-pulse flex-shrink-0">⚠️</span> 
-        <span>Valor promocional liberado somente hoje: <span id="data-dinamica" class="text-[#fef08a] font-black underline decoration-2 underline-offset-2"></span></span>
+  <div class="topbar">
+    <span style="animation:pulse 1.5s cubic-bezier(.4,0,.6,1) infinite; flex-shrink:0;">⚠️</span>
+    <span>Valor promocional liberado somente hoje: <span id="data-dinamica" class="date"></span></span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const dataHoje = new Date();
+      const dataFormatada = dataHoje.toLocaleDateString('pt-BR');
+      document.getElementById('data-dinamica').textContent = dataFormatada;
+    });
+  </script>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Pipoca Bolinha • Crocância 30 Dias • Vendas</div>
+
+      <h1 class="headline">
+        Como faturar de <br>
+        <span class="green-text">R$ 2.000 a R$ 5.000/mês</span><br>
+        fazendo o <span class="brand-text">Balde Trufado</span>
+      </h1>
+
+      <div class="hero-img-wrap">
+        <img
+          src="imagem1.webp"
+          onerror="this.onerror=null; this.src='https://placehold.co/400x400/fce7f3/db2777?text=Balde+de+Pipoca'"
+          alt="Balde de Pipoca Trufado"
+          width="400"
+          height="400"
+          class="hero-img"
+          fetchpriority="high"
+          decoding="async">
+      </div>
+
+      <p class="subheadline">
+        Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
+      </p>
+
+      <div class="cta-area">
+        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span></div>
+        <a href="#oferta" class="btn-success">SIM! QUERO APRENDER ISSO</a>
+        <p class="safe-text">🔒 Compra Segura • Acesso Imediato</p>
+      </div>
     </div>
+  </header>
 
-    <!-- Script para puxar a data atual -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const dataHoje = new Date();
-            // Formata a data para o padrão brasileiro (ex: 20/06/2026)
-            const dataFormatada = dataHoje.toLocaleDateString('pt-BR');
-            document.getElementById('data-dinamica').textContent = dataFormatada;
-        });
-    </script>
-
-    <!-- SECTION 1: HERO / PROMESSA -->
-    <header class="relative bg-brand-50 pt-10 pb-16 overflow-hidden">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            
-            <!-- Tag Pipoca -->
-            <div class="inline-block bg-brand-100 text-brand-700 font-bold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand-200 uppercase tracking-wide mt-4">
-                Pipoca Bolinha • Crocância 30 Dias • Vendas
-            </div>
-            
-            <!-- Headline Matadora -->
-            <h1 class="font-heading text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
-                Como faturar de <br>
-                <span class="text-green-600">R$ 2.000 a R$ 5.000/mês</span><br>
-                fazendo o <span class="text-brand-600">Balde Trufado</span>
-            </h1>
-            
-            <!-- IMAGEM 1 POSICIONADA EXATAMENTE AQUI -->
-            <div class="relative mx-auto w-full max-w-sm md:max-w-md mb-6">
-                <!-- Fallback de imagem adicionado caso a webp não exista -->
-                <img src="imagem1.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x400/fce7f3/db2777?text=Balde+de+Pipoca'" alt="Balde de Pipoca Trufado" class="relative z-10 w-full h-auto object-cover animate-float rounded-2xl shadow-lg" fetchpriority="high">
-            </div>
-
-            <!-- Subheadline -->
-            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto font-medium leading-relaxed">
-                Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
-            </p>
-
-            <!-- Área de Botão e Oferta -->
-            <div class="max-w-sm mx-auto flex flex-col items-center">
-                <!-- Tag de Oferta Separada -->
-                <div class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white font-bold text-[13px] py-1.5 px-5 rounded-full mb-4 shadow-md uppercase tracking-wider animate-pulse">
-                    <span class="text-base">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span>
-                </div>
-                
-                <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
-                    SIM! QUERO APRENDER ISSO
-                </a>
-                
-                <p class="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center gap-2">
-                    🔒 Compra Segura • Acesso Imediato
-                </p>
-            </div>
+  <section class="section learn">
+    <div class="container">
+      <div class="section-header">
+        <div class="learn-img-wrap">
+          <img src="imagem2.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x400/fdf2f8/db2777?text=Mulher+Fazendo+Doce'" alt="Mulher fazendo doce" width="400" height="400" class="learn-img" loading="lazy" decoding="async">
         </div>
-    </header>
+        <h2 class="section-title">Você vai aprender muito mais que <span class="red-text">receitas</span></h2>
+      </div>
 
-    <!-- SECTION 3: O QUE VOCÊ VAI APRENDER (COM IMAGEM REPOSICIONADA) -->
-    <section class="py-20 bg-[#fbf9f6]">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                
-                <!-- Imagem da mulher fazendo doce (reposicionada da antiga seção 2) -->
-                <div class="relative w-full max-w-md mx-auto mb-10">
-                    <img src="imagem2.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x400/fdf2f8/db2777?text=Mulher+Fazendo+Doce'" alt="Mulher fazendo doce" class="relative z-10 w-full rounded-2xl shadow-lg border-4 border-white" loading="lazy">
-                </div>
+      <div class="modules-grid">
+        <div class="module-card"><span class="check-icon">✓</span><span>Estouro e seleção do milho secreto</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Pipoqueira elétrica, manual ou de panela</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Armazenamento e validade (Crocância 30 Dias)</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>6+ técnicas de caramelização blindada</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>4 técnicas de separação + híbrida</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>O Segredo das caldas brilhantes de vitrine</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Precificação Exata + Planilha Automática</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Embalagens e a Montagem Irresistível no Balde</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Instagram e vendas profissionais por catálogo</span></div>
+        <div class="module-card"><span class="check-icon">✓</span><span>Scripts, mensagens e vendas no Automático</span></div>
+      </div>
 
-                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
-                    Você vai aprender muito mais que <span class="text-[#c1121f]">receitas</span>
-                </h2>
-            </div>
+      <div class="cta-area" style="margin-top:16px;">
+        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span></div>
+        <a href="#oferta" class="btn-success">SIM! QUERO APRENDER ISSO</a>
+      </div>
+    </div>
+  </section>
 
-            <!-- Grid de Módulos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-12">
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Estouro e seleção do milho secreto</span>
-                </div>
+  <section class="section white">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title mb" style="text-transform:uppercase;">Você ainda vai receber <br><span class="brand-text">Todos esses Bônus</span></h2>
+        <p class="section-subtitle">Garanta sua vaga hoje e leve esse arsenal para multiplicar suas vendas.</p>
+      </div>
 
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Pipoqueira elétrica, manual ou de panela</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Armazenamento e validade (Crocância 30 Dias)</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">6+ técnicas de caramelização blindada</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">4 técnicas de separação + híbrida</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">O Segredo das caldas brilhantes de vitrine</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Precificação Exata + Planilha Automática</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Embalagens e a Montagem Irresistível no Balde</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Instagram e vendas profissionais por catálogo</span>
-                </div>
-
-                <div class="flex items-center gap-4 bg-white px-6 py-5 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-600">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <span class="font-bold text-gray-800 text-[15px]">Scripts, mensagens e vendas no Automático</span>
-                </div>
-            </div>
-
-            <!-- NOVO BOTÃO ABAIXO DA GRADE -->
-            <div class="max-w-sm mx-auto flex flex-col items-center mt-4">
-                <!-- Tag de Oferta Separada -->
-                <div class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white font-bold text-[13px] py-1.5 px-5 rounded-full mb-4 shadow-md uppercase tracking-wider animate-pulse">
-                    <span class="text-base">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span>
-                </div>
-                <a href="#oferta" class="btn-success w-full text-center font-black text-lg py-4 px-8 rounded-xl uppercase tracking-wide z-10 relative cursor-pointer">
-                    SIM! QUERO APRENDER ISSO
-                </a>
-            </div>
-
+      <div class="bonus-row">
+        <div class="bonus-img-col">
+          <img src="imagem6.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x300/fdf2f8/db2777?text=Mockup+Bonus'" alt="Mockup dos bônus" width="400" height="300" class="bonus-img" loading="lazy" decoding="async">
         </div>
-    </section>
 
-    <!-- SECTION 4: BÔNUS INCLUSOS -->
-    <section class="py-20 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight uppercase">
-                    Você ainda vai receber <br><span class="text-brand-600">Todos esses Bônus</span>
-                </h2>
-                <p class="text-lg text-gray-600 font-medium">Garanta sua vaga hoje e leve esse arsenal para multiplicar suas vendas.</p>
+        <div class="bonus-list">
+          <div class="bonus-card">
+            <div class="bonus-icon">💬</div>
+            <div>
+              <h4>Script de Vendas Automáticas</h4>
+              <p>Mensagens persuasivas prontas. É só copiar, colar no WhatsApp e ver os pedidos chegando.</p>
             </div>
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <div class="w-full lg:w-1/2">
-                    <!-- Fallback de imagem adicionado -->
-                    <img src="imagem6.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x300/fdf2f8/db2777?text=Mockup+Bonus'" alt="Mockup dos bônus" class="w-full max-w-md mx-auto h-auto object-contain" loading="lazy">
-                </div>
-                <div class="w-full lg:w-1/2 space-y-4">
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                        <div class="text-3xl">💬</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">Script de Vendas Automáticas</h4>
-                            <p class="text-gray-600 text-sm mt-1">Mensagens persuasivas prontas. É só copiar, colar no WhatsApp e ver os pedidos chegando.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                        <div class="text-3xl">🎨</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">Pack de Adesivos Profissionais</h4>
-                            <p class="text-gray-600 text-sm mt-1">Templates no Canva para imprimir e colar nos baldes.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100">
-                        <div class="text-3xl">📊</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 text-lg">Calculadora de Lucro</h4>
-                            <p class="text-gray-600 text-sm mt-1">Planilha simples onde você digita os ingredientes e ela te dá o preço exato.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 p-5 bg-brand-50 rounded-2xl border-2 border-brand-300 shadow-sm">
-                        <div class="text-3xl">🎁</div>
-                        <div>
-                            <h4 class="font-black text-brand-800 text-lg uppercase">8 Cursos Extras Gratuitos</h4>
-                            <div class="grid grid-cols-2 gap-1 text-xs font-bold text-brand-900 mt-2">
-                                <span>• Bolos de Pote</span>
-                                <span>• Copo da Felicidade</span>
-                                <span>• Brigadeiros</span>
-                                <span>• Trufas Lucrativas</span>
-                                <span>• Caseirinhos</span>
-                                <span>• Brownie</span>
-                                <span>• Geladinho</span>
-                                <span>• Ovos de Páscoa</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+
+          <div class="bonus-card">
+            <div class="bonus-icon">🎨</div>
+            <div>
+              <h4>Pack de Adesivos Profissionais</h4>
+              <p>Templates no Canva para imprimir e colar nos baldes.</p>
             </div>
+          </div>
+
+          <div class="bonus-card">
+            <div class="bonus-icon">📊</div>
+            <div>
+              <h4>Calculadora de Lucro</h4>
+              <p>Planilha simples onde você digita os ingredientes e ela te dá o preço exato.</p>
+            </div>
+          </div>
+
+          <div class="bonus-card premium">
+            <div class="bonus-icon">🎁</div>
+            <div>
+              <h4>8 Cursos Extras Gratuitos</h4>
+              <div class="extra-grid">
+                <span>• Bolos de Pote</span>
+                <span>• Copo da Felicidade</span>
+                <span>• Brigadeiros</span>
+                <span>• Trufas Lucrativas</span>
+                <span>• Caseirinhos</span>
+                <span>• Brownie</span>
+                <span>• Geladinho</span>
+                <span>• Ovos de Páscoa</span>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTION 5: PROVA SOCIAL E COMUNIDADE -->
-    <section class="py-20 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Quem aplica, <span class="text-brand-600">vende tudo!</span></h2>
+  <section class="section gray">
+    <div class="container-sm">
+      <div class="section-header">
+        <h2 class="section-title">Quem aplica, <span class="brand-text">vende tudo!</span></h2>
+      </div>
+
+      <div class="comments">
+        <div class="comment">
+          <div class="avatar pink">P</div>
+          <div class="comment-body">
+            <div class="fb-bubble">
+              <p class="name">Patrícia Gomes</p>
+              <p class="text">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade e levou 3 dias e não murchou um pingo.</p>
+              <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>89</span></div>
             </div>
-            
-            <div class="space-y-6 max-w-2xl mx-auto mb-16">
-                <!-- Comentário 1 -->
-                <div class="flex gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-300 text-brand-900 flex items-center justify-center font-bold text-lg flex-shrink-0">P</div>
-                    <div class="flex-1">
-                        <div class="fb-bubble text-left shadow-sm">
-                            <p class="font-bold text-gray-900 text-[14px] mb-1">Patrícia Gomes</p>
-                            <p class="text-gray-800 text-[14px] leading-snug">Gente, a técnica da crocância funciona real! 😱 Fiz os baldes de Ninho pra vender na faculdade e levou 3 dias e não murchou um pingo.</p>
-                            <div class="fb-reactions"><span>👍</span><span>❤️</span> <span>89</span></div>
-                        </div>
-                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
-                            <span class="cursor-pointer hover:underline">Curtir</span>
-                            <span class="cursor-pointer hover:underline">Responder</span>
-                            <span class="font-normal">2 h</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Comentário 2 -->
-                <div class="flex gap-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-800 flex items-center justify-center font-bold text-lg flex-shrink-0">L</div>
-                    <div class="flex-1">
-                        <div class="fb-bubble text-left shadow-sm">
-                            <p class="font-bold text-gray-900 text-[14px] mb-1">Luciana Marques</p>
-                            <p class="text-gray-800 text-[14px] leading-snug">Aquela montagem do Balde é covardia 😍 usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora.</p>
-                            <div class="fb-reactions"><span>❤️</span><span>😮</span> <span>42</span></div>
-                        </div>
-                        <div class="text-[11px] text-gray-500 font-semibold mt-1.5 ml-3 space-x-3">
-                            <span class="cursor-pointer hover:underline">Curtir</span>
-                            <span class="cursor-pointer hover:underline">Responder</span>
-                            <span class="font-normal">4 h</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <p class="text-brand-600 font-bold mb-4 uppercase tracking-wider text-sm">94% das alunas recomendam a comunidade</p>
-                <!-- Fallback de imagem adicionado -->
-                <img src="imagem7.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x200/fdf2f8/db2777?text=Comunidade+Ativa'" alt="Comunidade ativa" class="w-full max-w-md mx-auto rounded-xl shadow-md" loading="lazy">
-            </div>
+            <div class="comment-actions"><span>Curtir</span><span>Responder</span><span style="font-weight:400;">2 h</span></div>
+          </div>
         </div>
-    </section>
 
-    <!-- SECTION 6: OFERTA FINAL E GARANTIA (R$ 10) -->
-    <section id="oferta" class="py-20 bg-brand-50 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="font-heading text-4xl md:text-5xl font-black text-[#111827] mb-2 tracking-tight uppercase">
-                SEU PLANO ESTÁ <span class="text-[#0fa958]">PRONTO</span>
-            </h2>
-            <p class="text-lg md:text-xl text-gray-600 mb-8 font-medium">Curso Completo + Todos os Bônus Premium Inclusos</p>
-
-            <!-- RESUMO DO QUE A ALUNA RECEBE -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-[24px] p-6 md:p-7 shadow-[0_10px_35px_rgba(0,0,0,0.05)] max-w-3xl mx-auto mb-8 border border-white">
-                <p class="text-[#d81b60] font-black text-sm uppercase tracking-[0.2em] mb-5">Você recebe hoje</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-left">
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Curso completo do Balde de Pipoca Trufado</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Técnica de crocância por até 30 dias</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Estouro correto e escolha do milho ideal</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">6+ técnicas de caramelização blindada</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Caldas brilhantes com aparência de vitrine</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Montagem irresistível no balde</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Precificação exata + planilha automática</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Scripts de venda para WhatsApp e Instagram</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Pack de adesivos profissionais no Canva</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">8 cursos extras gratuitos de confeitaria</span>
-                    </div>
-                    <div class="flex items-start gap-3 bg-white rounded-2xl px-4 py-3 border border-gray-100 shadow-sm md:col-span-2">
-                        <span class="text-[#0fa958] font-black text-lg leading-none mt-0.5">✓</span>
-                        <span class="font-bold text-gray-800 text-[15px] leading-snug">Acesso imediato ao conteúdo + garantia incondicional de 7 dias</span>
-                    </div>
-                </div>
+        <div class="comment">
+          <div class="avatar blue">L</div>
+          <div class="comment-body">
+            <div class="fb-bubble">
+              <p class="name">Luciana Marques</p>
+              <p class="text">Aquela montagem do Balde é covardia 😍 usei as mensagens prontas no status do WhatsApp e vendi 12 baldes em uma hora.</p>
+              <div class="fb-reactions"><span>❤️</span><span>😮</span> <span>42</span></div>
             </div>
-            
-            <!-- CAIXA DE PREÇO ATUALIZADA -->
-            <div class="bg-white rounded-[28px] p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] max-w-sm mx-auto mb-8 border border-gray-100">
-                <p class="text-[#64748b] font-medium text-xl mb-1">Por apenas</p>
-                <div class="text-[#d81b60] font-bold text-[64px] leading-none mb-3 tracking-tight font-heading">
-                    R$ 10,00
-                </div>
-                <p class="text-[#94a3b8] font-medium text-[15px]">
-                    <span class="line-through">De R$ 197,00</span> (pagamento único)
-                </p>
-            </div>
-            
-            <!-- BOTÃO CTA CHECKOUT -->
-            <div class="max-w-sm mx-auto">
-                <a href="https://mariih.mycartpanda.com/checkout/210959205:1" target="_blank" class="block w-full bg-[#0fa958] hover:bg-[#0c8b48] text-white font-bold text-xl py-5 rounded-2xl shadow-[0_8px_20px_rgba(15,169,88,0.25)] transition-transform transform hover:scale-105 tracking-wide mb-3">
-                    COMPRAR AGORA
-                </a>
-                <p class="text-sm text-gray-500 font-semibold flex items-center justify-center gap-1.5">
-                    🔒 Ambiente 100% Seguro e Criptografado
-                </p>
-            </div>
-
-            <!-- Garantia -->
-            <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 max-w-2xl mx-auto">
-                <!-- Fallback de imagem adicionado -->
-                <img src="imagem8.webp" onerror="this.onerror=null; this.src='https://placehold.co/100x100/fdf2f8/db2777?text=Garantia'" alt="Garantia de 7 dias" class="w-24 h-auto object-contain flex-shrink-0" loading="lazy">
-                <div class="text-left">
-                    <h4 class="font-bold text-gray-900 text-lg mb-1">Garantia Incondicional de 7 Dias</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
-                </div>
-            </div>
+            <div class="comment-actions"><span>Curtir</span><span>Responder</span><span style="font-weight:400;">4 h</span></div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- SECTION 7: FAQ (PERGUNTAS FREQUENTES) -->
-    <section class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-3xl md:text-4xl font-black text-gray-900 tracking-tight">Perguntas Frequentes</h2>
-            </div>
-            <div class="space-y-4">
-                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
-                        Preciso de máquinas caras para estourar a pipoca?
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        <strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha.
-                    </div>
-                </details>
-                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
-                        Como e quando vou receber o acesso?
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        <strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado, você receberá um e-mail com o seu link de acesso.
-                    </div>
-                </details>
-                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-300 transition-colors [&_summary::-webkit-details-marker]:hidden">
-                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 text-gray-900 font-bold text-lg md:text-[17px]">
-                        E se eu tiver vergonha ou não souber vender?
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed text-[15px]">
-                        É por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Basta copiar nossos textos, usar as fotos e colar no seu WhatsApp/Instagram.
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
+      <div class="text-center">
+        <p class="community-label">94% das alunas recomendam a comunidade</p>
+        <img src="imagem7.webp" onerror="this.onerror=null; this.src='https://placehold.co/400x200/fdf2f8/db2777?text=Comunidade+Ativa'" alt="Comunidade ativa" width="400" height="200" class="community-img" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
 
-    <!-- FOOTER LEGAL -->
-    <footer class="bg-gray-900 py-10 text-center border-t border-gray-800">
-        <div class="max-w-5xl mx-auto px-4">
-            <p class="text-sm text-gray-400 font-medium mb-4">© 2026. Todos os direitos reservados.</p>
-            <p class="text-[11px] text-gray-500 max-w-3xl mx-auto leading-relaxed">
-                Este site não faz parte do site do Facebook ou da Meta Platforms Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da Meta Platforms, Inc.
-            </p>
-        </div>
-    </footer>
+  <section id="oferta" class="section offer-section">
+    <div class="container-sm text-center relative z-10">
+      <h2 class="offer-title">SEU PLANO ESTÁ <span class="ready">PRONTO</span></h2>
+      <p class="offer-desc">Curso Completo + Todos os Bônus Premium Inclusos</p>
 
-    <!-- POPUP DE NOTIFICAÇÃO DE COMPRA (PROVA SOCIAL DINÂMICA) -->
-    <div id="purchase-notification" class="fixed bottom-4 left-4 md:bottom-6 md:left-6 bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 p-3 flex items-center gap-3 z-[100] transform transition-all duration-500 translate-y-24 opacity-0 pointer-events-none max-w-[280px]">
-        <div class="bg-green-100 p-2 rounded-full flex-shrink-0">
-            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+      <div class="receive-box">
+        <p class="receive-label">Você recebe hoje</p>
+        <div class="receive-grid">
+          <div class="receive-item"><span class="receive-check">✓</span><span>Curso completo do Balde de Pipoca Trufado</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Técnica de crocância por até 30 dias</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Estouro correto e escolha do milho ideal</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>6+ técnicas de caramelização blindada</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Caldas brilhantes com aparência de vitrine</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Montagem irresistível no balde</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Precificação exata + planilha automática</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Scripts de venda para WhatsApp e Instagram</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>Pack de adesivos profissionais no Canva</span></div>
+          <div class="receive-item"><span class="receive-check">✓</span><span>8 cursos extras gratuitos de confeitaria</span></div>
+          <div class="receive-item full"><span class="receive-check">✓</span><span>Acesso imediato ao conteúdo + garantia incondicional de 7 dias</span></div>
         </div>
+      </div>
+
+      <div class="price-box">
+        <p class="label">Por apenas</p>
+        <div class="price">R$ 10,00</div>
+        <p class="old-price"><span class="line-through">De R$ 197,00</span> (pagamento único)</p>
+      </div>
+
+      <div class="cta-area">
+        <a href="https://mariih.mycartpanda.com/checkout/210959205:1" target="_blank" class="checkout-btn">COMPRAR AGORA</a>
+        <p class="secure">🔒 Ambiente 100% Seguro e Criptografado</p>
+      </div>
+
+      <div class="guarantee">
+        <img src="imagem8.webp" onerror="this.onerror=null; this.src='https://placehold.co/100x100/fdf2f8/db2777?text=Garantia'" alt="Garantia de 7 dias" width="100" height="100" loading="lazy" decoding="async">
         <div>
-            <p class="text-sm text-gray-800 font-medium leading-tight">
-                <span id="notify-name" class="font-bold text-gray-900">Marta</span> acabou de comprar
-            </p>
-            <p class="text-[11px] text-gray-500 mt-0.5 font-medium">
-                Há <span id="notify-time">1 minuto</span>
-            </p>
+          <h4>Garantia Incondicional de 7 Dias</h4>
+          <p>O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
         </div>
+      </div>
     </div>
+  </section>
 
-    <!-- SCRIPT DAS NOTIFICAÇÕES -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Lista de nomes e tempos para gerar aleatoriedade
-            const buyers = [
-                { name: 'Marta', time: '1 minuto' },
-                { name: 'Márcia', time: '4 minutos' },
-                { name: 'Juliana', time: '12 minutos' },
-                { name: 'Ana Paula', time: '23 minutos' },
-                { name: 'Fernanda', time: '5 minutos' },
-                { name: 'Camila', time: '2 minutos' },
-                { name: 'Amanda', time: '8 minutos' },
-                { name: 'Letícia', time: 'agora mesmo' },
-                { name: 'Bruna', time: '15 minutos' },
-                { name: 'Patrícia', time: '3 minutos' }
-            ];
+  <section class="section white faq">
+    <div class="container-sm">
+      <div class="section-header">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Preciso de máquinas caras para estourar a pipoca?</summary>
+          <div><strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha.</div>
+        </details>
+        <details>
+          <summary>Como e quando vou receber o acesso?</summary>
+          <div><strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado, você receberá um e-mail com o seu link de acesso.</div>
+        </details>
+        <details>
+          <summary>E se eu tiver vergonha ou não souber vender?</summary>
+          <div>É por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Basta copiar nossos textos, usar as fotos e colar no seu WhatsApp/Instagram.</div>
+        </details>
+      </div>
+    </div>
+  </section>
 
-            const notificationEl = document.getElementById('purchase-notification');
-            const nameEl = document.getElementById('notify-name');
-            const timeEl = document.getElementById('notify-time');
+  <footer>
+    <div class="container">
+      <p class="copy">© 2026. Todos os direitos reservados.</p>
+      <p class="legal">Este site não faz parte do site do Facebook ou da Meta Platforms Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da Meta Platforms, Inc.</p>
+    </div>
+  </footer>
 
-            function showNextNotification() {
-                // Escolhe uma compradora aleatória da lista
-                const buyer = buyers[Math.floor(Math.random() * buyers.length)];
-                
-                // Atualiza os textos
-                nameEl.textContent = buyer.name;
-                timeEl.textContent = buyer.time;
+  <div id="purchase-notification">
+    <div class="notification-icon">
+      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <div>
+      <p class="notification-title"><strong id="notify-name">Marta</strong> acabou de comprar</p>
+      <p class="notification-time">Há <span id="notify-time">1 minuto</span></p>
+    </div>
+  </div>
 
-                // Mostra a notificação fazendo ela subir e ficar opaca
-                notificationEl.classList.add('notification-show');
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const buyers = [
+        { name: 'Marta', time: '1 minuto' },
+        { name: 'Márcia', time: '4 minutos' },
+        { name: 'Juliana', time: '12 minutos' },
+        { name: 'Ana Paula', time: '23 minutos' },
+        { name: 'Fernanda', time: '5 minutos' },
+        { name: 'Camila', time: '2 minutos' },
+        { name: 'Amanda', time: '8 minutos' },
+        { name: 'Letícia', time: 'agora mesmo' },
+        { name: 'Bruna', time: '15 minutos' },
+        { name: 'Patrícia', time: '3 minutos' }
+      ];
 
-                // Esconde a notificação após 5 segundos
-                setTimeout(() => {
-                    notificationEl.classList.remove('notification-show');
-                }, 5000);
-            }
+      const notificationEl = document.getElementById('purchase-notification');
+      const nameEl = document.getElementById('notify-name');
+      const timeEl = document.getElementById('notify-time');
 
-            // Espera 3 segundos após o site abrir para mostrar a primeira
-            setTimeout(() => {
-                showNextNotification();
-                // Depois, continua mostrando uma nova a cada 15 segundos
-                setInterval(showNextNotification, 15000);
-            }, 3000);
-        });
-    </script>
+      function showNextNotification() {
+        const buyer = buyers[Math.floor(Math.random() * buyers.length)];
+        nameEl.textContent = buyer.name;
+        timeEl.textContent = buyer.time;
+        notificationEl.classList.add('notification-show');
+        setTimeout(() => {
+          notificationEl.classList.remove('notification-show');
+        }, 5000);
+      }
+
+      setTimeout(() => {
+        showNextNotification();
+        setInterval(showNextNotification, 15000);
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
