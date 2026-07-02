@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
-<head>
+<!DOCTYPE html><html lang="pt-BR" class="scroll-smooth"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balde de Pipoca Trufado - Fature de R$ 2.000 a R$ 5.000/mês</title>
-
+  
   <link rel="preload" as="image" href="imagem1.webp" fetchpriority="high">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,6 +32,8 @@
       --gray-800: #1f2937;
       --gray-900: #111827;
       --red: #c1121f;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
     }
 
     * { box-sizing: border-box; }
@@ -108,8 +107,8 @@
     .headline {
       margin: 0 0 24px;
       font-family: 'Poppins', 'Inter', sans-serif;
-      font-size: 40px;
-      line-height: 1.08;
+      font-size: 38px;
+      line-height: 1.15;
       letter-spacing: -.03em;
       font-weight: 900;
       color: var(--gray-900);
@@ -336,10 +335,10 @@
       object-fit: contain;
     }
 
-    .offer-section { background: var(--brand-50); position: relative; overflow: hidden; }
+    .offer-section { background: #fdf2f8; position: relative; overflow: hidden; }
     .offer-title {
       font-family: 'Poppins', 'Inter', sans-serif;
-      font-size: 40px;
+      font-size: 36px;
       line-height: 1.1;
       font-weight: 900;
       letter-spacing: -.025em;
@@ -348,69 +347,195 @@
       margin: 0 0 8px;
     }
     .ready { color: #0fa958; }
-    .offer-desc { font-size: 18px; color: var(--gray-600); margin: 0 0 32px; font-weight: 500; }
-    .receive-box {
-      background: rgba(255,255,255,.80);
-      backdrop-filter: blur(4px);
+    .offer-desc { font-size: 18px; color: var(--gray-600); margin: 0 0 48px; font-weight: 500; }
+
+    /* Estilos das Ofertas Duplas */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 48px;
+      align-items: stretch;
+    }
+    .offer-card {
+      background: #ffffff;
       border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.05);
-      max-width: 768px;
-      margin: 0 auto 32px;
-      border: 1px solid #fff;
-    }
-    .receive-label { color: #d81b60; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .2em; margin: 0 0 20px; }
-    .receive-grid { display: grid; grid-template-columns: 1fr; gap: 12px; text-align: left; }
-    .receive-item {
+      border: 2px solid var(--gray-200);
+      padding: 32px 24px;
+      position: relative;
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 12px 16px;
-      border: 1px solid var(--gray-100);
-      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .3s ease, box-shadow .3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,.02);
+      text-align: left;
     }
-    .receive-check { color: #0fa958; font-weight: 900; font-size: 18px; line-height: 1; margin-top: 2px; }
-    .receive-item span:last-child { font-weight: 800; color: var(--gray-800); font-size: 15px; line-height: 1.35; }
-    .price-box {
-      background: #fff;
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.06);
-      max-width: 384px;
-      margin: 0 auto 32px;
-      border: 1px solid var(--gray-100);
+    .offer-card.best-seller {
+      border: 3px solid var(--brand-500);
+      background: linear-gradient(180deg, #fff 0%, #fdf2f8 100%);
+      box-shadow: 0 20px 25px -5px rgba(219, 39, 119, 0.15), 0 10px 10px -5px rgba(219, 39, 119, 0.04);
+      transform: scale(1.02);
     }
-    .price-box .label { color: #64748b; font-weight: 500; font-size: 20px; margin: 0 0 4px; }
-    .price {
-      color: #d81b60;
-      font-weight: 800;
-      font-size: 64px;
-      line-height: 1;
-      letter-spacing: -.025em;
-      font-family: 'Poppins', 'Inter', sans-serif;
-      margin-bottom: 12px;
-    }
-    .old-price { color: #94a3b8; font-weight: 500; font-size: 15px; margin: 0; }
-    .line-through { text-decoration: line-through; }
-    .checkout-btn {
-      display: block;
-      width: 100%;
-      background: #0fa958;
+    .badge-best-seller {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-800) 100%);
       color: #fff;
-      font-weight: 800;
-      font-size: 20px;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(15,169,88,.25);
-      transition: transform .2s ease, background .2s ease;
-      letter-spacing: .025em;
-      margin-bottom: 12px;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      box-shadow: 0 4px 6px rgba(219, 39, 119, 0.3);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .offer-card-header {
+      margin-bottom: 24px;
       text-align: center;
     }
-    .checkout-btn:hover { background: #0c8b48; transform: scale(1.05); }
-    .secure { color: var(--gray-500); font-weight: 700; font-size: 14px; display: flex; justify-content: center; align-items: center; gap: 6px; margin: 0; }
+    .offer-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gray-900);
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+    .offer-card.best-seller .offer-card-title {
+      color: var(--brand-700);
+    }
+    .offer-card-subtitle {
+      font-size: 14px;
+      color: var(--gray-500);
+      font-weight: 500;
+      margin: 0;
+    }
+    .offer-price-area {
+      text-align: center;
+      margin: 20px 0;
+      padding: 16px 0;
+      border-top: 1px dashed var(--gray-200);
+      border-bottom: 1px dashed var(--gray-200);
+    }
+    .offer-card.best-seller .offer-price-area {
+      border-top-color: var(--brand-200);
+      border-bottom-color: var(--brand-200);
+    }
+    .offer-old-price {
+      font-size: 14px;
+      color: var(--gray-400);
+      text-decoration: line-through;
+      margin: 0 0 4px;
+      font-weight: 500;
+    }
+    .offer-new-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--gray-900);
+      line-height: 1;
+      margin: 0;
+    }
+    .offer-card.best-seller .offer-new-price {
+      color: var(--brand-600);
+    }
+    .offer-price-info {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin: 6px 0 0;
+      font-weight: 600;
+    }
+    .offer-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .offer-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--gray-700);
+      font-weight: 600;
+    }
+    .offer-feature-item .icon {
+      flex-shrink: 0;
+      font-weight: 900;
+      font-size: 16px;
+    }
+    .offer-feature-item.checked .icon {
+      color: var(--green);
+    }
+    .offer-feature-item.premium-only {
+      color: var(--brand-800);
+      background: rgba(253, 242, 248, 0.7);
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px dashed var(--brand-200);
+    }
+    .offer-feature-item.premium-only .icon {
+      color: var(--brand-600);
+    }
+    .offer-feature-item.not-included {
+      color: var(--gray-400);
+      text-decoration: line-through;
+      font-weight: 400;
+    }
+    .offer-feature-item.not-included .icon {
+      color: var(--gray-400);
+    }
+
+    .offer-checkout-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: .025em;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+    .offer-card .offer-checkout-btn {
+      background: var(--gray-800);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    }
+    .offer-card .offer-checkout-btn:hover {
+      background: var(--gray-950);
+      transform: translateY(-2px);
+    }
+    .offer-card.best-seller .offer-checkout-btn {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(5, 150, 105, 0.3);
+      animation: pulse-button 2s infinite;
+    }
+    @keyframes pulse-button {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    .offer-card.best-seller .offer-checkout-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(5, 150, 105, 0.4);
+    }
+
     .guarantee { margin: 64px auto 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; max-width: 672px; }
     .guarantee img { width: 96px; height: auto; object-fit: contain; flex-shrink: 0; }
     .guarantee h4 { margin: 0 0 4px; color: var(--gray-900); font-weight: 800; font-size: 18px; }
@@ -478,31 +603,26 @@
       .topbar { font-size: 15px; }
       .headline { font-size: 48px; }
     }
-
     @media (min-width: 768px) {
       .hero-img-wrap { max-width: 448px; }
       .section-title { font-size: 36px; }
-      .offer-title { font-size: 48px; }
-      .offer-desc { font-size: 20px; }
-      .receive-box { padding: 28px; }
-      .receive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .receive-item.full { grid-column: span 2; }
+      .offer-title { font-size: 44px; }
+      .offer-desc { font-size: 20px; margin-bottom: 56px; }
+      .offers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .offer-card.best-seller { transform: scale(1.05); }
       .guarantee { flex-direction: row; text-align: left; }
       .faq summary { font-size: 17px; }
     }
-
     @media (min-width: 1024px) {
       .bonus-row { flex-direction: row; }
       .bonus-img-col, .bonus-list { width: 50%; }
       #purchase-notification { bottom: 24px; left: 24px; }
     }
-
     @media (min-width: 768px) {
       .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 380px) {
-      .headline { font-size: 34px; }
+      .headline { font-size: 32px; }
       .price { font-size: 56px; }
       .topbar { font-size: 12px; }
     }
@@ -536,13 +656,10 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-tag">Pipoca Bolinha • Crocância 30 Dias • Vendas</div>
-
       <h1 class="headline">
-        Como faturar de <br>
-        <span class="green-text">R$ 2.000 a R$ 5.000/mês</span><br>
-        fazendo o <span class="brand-text">Balde Trufado</span>
+        Descubra o método para faturar até <br>
+        <span class="green-text">R$ 5.000/mês</span> com a nova tendência dos <span class="brand-text">Baldes de Pipoca Gourmet</span>
       </h1>
-
       <div class="hero-img-wrap">
         <img
           src="imagem1.webp"
@@ -554,14 +671,12 @@
           fetchpriority="high"
           decoding="async">
       </div>
-
       <p class="subheadline">
         Descubra como mulheres comuns estão lucrando alto vendendo o doce mais desejado da internet <strong>usando apenas as panelas que já têm em casa.</strong>
       </p>
-
       <div class="cta-area">
-        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span></div>
-        <a href="#oferta" class="btn-success">SIM! QUERO APRENDER ISSO</a>
+        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Ofertas Especiais a partir de R$ 10,00</span></div>
+        <a href="#oferta" class="btn-success">VER AS OPÇÕES DE COMPRA</a>
         <p class="safe-text">🔒 Compra Segura • Acesso Imediato</p>
       </div>
     </div>
@@ -590,8 +705,8 @@
       </div>
 
       <div class="cta-area" style="margin-top:16px;">
-        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Oferta Especial: Apenas R$ 10,00</span></div>
-        <a href="#oferta" class="btn-success">SIM! QUERO APRENDER ISSO</a>
+        <div class="offer-badge"><span style="font-size:16px;">🔥</span> <span>Escolha seu plano a partir de R$ 10</span></div>
+        <a href="#oferta" class="btn-success">VER AS OPÇÕES DE COMPRA</a>
       </div>
     </div>
   </section>
@@ -696,43 +811,85 @@
   </section>
 
   <section id="oferta" class="section offer-section">
-    <div class="container-sm text-center relative z-10">
-      <h2 class="offer-title">SEU PLANO ESTÁ <span class="ready">PRONTO</span></h2>
-      <p class="offer-desc">Curso Completo + Todos os Bônus Premium Inclusos</p>
+    <div class="container text-center relative z-10">
+      <h2 class="offer-title">ESCOLHA SEU PLANO E COMECE <span class="ready">HOJE</span></h2>
+      <p class="offer-desc">Acesso imediato e garantia incondicional de 7 dias</p>
 
-      <div class="receive-box">
-        <p class="receive-label">Você recebe hoje</p>
-        <div class="receive-grid">
-          <div class="receive-item"><span class="receive-check">✓</span><span>Curso completo do Balde de Pipoca Trufado</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Técnica de crocância por até 30 dias</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Estouro correto e escolha do milho ideal</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>6+ técnicas de caramelização blindada</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Caldas brilhantes com aparência de vitrine</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Montagem irresistível no balde</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Precificação exata + planilha automática</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Scripts de venda para WhatsApp e Instagram</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>Pack de adesivos profissionais no Canva</span></div>
-          <div class="receive-item"><span class="receive-check">✓</span><span>8 cursos extras gratuitos de confeitaria</span></div>
-          <div class="receive-item full"><span class="receive-check">✓</span><span>Acesso imediato ao conteúdo + garantia incondicional de 7 dias</span></div>
+      <div class="offers-grid">
+        
+        <!-- Plano Simples - R$ 10,00 -->
+        <div class="offer-card">
+          <div class="offer-card-header">
+            <h3 class="offer-card-title">Plano Básico</h3>
+            <p class="offer-card-subtitle">Apenas a Apostila Digital de Receitas</p>
+          </div>
+
+          <div class="offer-price-area">
+            <p class="offer-old-price">De R$ 197,00</p>
+            <p class="offer-new-price">R$ 10,00</p>
+            <p class="offer-price-info">PAGAMENTO ÚNICO • ACESSO POR 1 ANO</p>
+          </div>
+
+          <ul class="offer-features-list">
+            <li class="offer-feature-item checked"><span class="icon">✓</span><span>Apostila Digital do Balde de Pipoca Trufado (Receitas)</span></li>
+            <li class="offer-feature-item checked"><span class="icon">✓</span><span>Garantia incondicional de 7 dias</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Técnica Secreta de Crocância por até 30 dias</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>6+ Técnicas de Caramelização Blindada</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Vídeo Aulas Passo a Passo na prática</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Planilha de Precificação Automatizada</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>8 Cursos Extras Gratuitos de confeitaria</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Kit de Divulgação Pronto (Banco de Fotos/Vídeos)</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Suporte VIP de 30 dias via WhatsApp</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Certificado Digital de Conclusão</span></li>
+            <li class="offer-feature-item not-included"><span class="icon">✕</span><span>Acesso Vitalício (Seu acesso expira em 1 ano)</span></li>
+          </ul>
+
+          <a href="https://mari-confeiteira.pay.yampi.com.br/r/DU5DX9L0RM" target="_blank" class="offer-checkout-btn">COMPRAR BÁSICO</a>
         </div>
+
+        <!-- Plano Premium - R$ 27,00 -->
+        <div class="offer-card best-seller">
+          <div class="badge-best-seller">⭐ RECOMENDADO: VENDEDORA DE ELITE</div>
+          
+          <div class="offer-card-header">
+            <h3 class="offer-card-title">Kit Premium Elite</h3>
+            <p class="offer-card-subtitle">O acelerador de resultados completo</p>
+          </div>
+
+          <div class="offer-price-area">
+            <p class="offer-old-price">De R$ 397,00</p>
+            <p class="offer-new-price">R$ 27,00</p>
+            <p class="offer-price-info">PAGAMENTO ÚNICO • ACESSO VITALÍCIO</p>
+          </div>
+
+          <ul class="offer-features-list">
+            <li class="offer-feature-item checked"><span class="icon">✓</span><span>Apostila Digital Completa do Balde de Pipoca Trufado</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">🔥</span><span><strong>Técnica Secreta de Crocância por até 30 dias</strong></span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">🍿</span><span>Estouro correto e escolha do milho ideal</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">💎</span><span>6+ técnicas de caramelização blindada</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">📹</span><span><strong>Mini Curso em Vídeo Aulas:</strong> Ponto do caramelo na prática</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">📊</span><span>Planilha de Precificação Automatizada Completa</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">🎁</span><span><strong>8 Cursos Extras Gratuitos</strong> de confeitaria</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">📸</span><span><strong>Kit Venda Sem Produzir:</strong> Banco de Fotos & Vídeos</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">💬</span><span><strong>Suporte VIP via WhatsApp:</strong> Mentoria direta</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">🎓</span><span><strong>Certificado de Especialista</strong> em Pipoca Gourmet</span></li>
+            <li class="offer-feature-item premium-only"><span class="icon">✨</span><span><strong>Acesso Vitalício:</strong> Estude para sempre no seu ritmo</span></li>
+            <li class="offer-feature-item checked"><span class="icon">✓</span><span>Garantia incondicional de 7 dias</span></li>
+          </ul>
+
+          <a href="https://mari-confeiteira.pay.yampi.com.br/r/FY7E4ZEDFN" target="_blank" class="offer-checkout-btn">COMPRAR KIT PREMIUM</a>
+        </div>
+
       </div>
 
-      <div class="price-box">
-        <p class="label">Por apenas</p>
-        <div class="price">R$ 10,00</div>
-        <p class="old-price"><span class="line-through">De R$ 197,00</span> (pagamento único)</p>
-      </div>
+      <p class="secure" style="margin-top:-16px; margin-bottom: 40px;">🔒 Ambiente 100% Seguro e Criptografado</p>
 
-      <div class="cta-area">
-        <a href="https://mariih.mycartpanda.com/checkout/210959205:1" target="_blank" class="checkout-btn">COMPRAR AGORA</a>
-        <p class="secure">🔒 Ambiente 100% Seguro e Criptografado</p>
-      </div>
-
+      <!-- Garantia -->
       <div class="guarantee">
         <img src="imagem8.webp" onerror="this.onerror=null; this.src='https://placehold.co/100x100/fdf2f8/db2777?text=Garantia'" alt="Garantia de 7 dias" width="100" height="100" loading="lazy" decoding="async">
         <div>
           <h4>Garantia Incondicional de 7 Dias</h4>
-          <p>O risco é todo nosso. Se você não gostar do material ou achar que não é pra você, devolvemos 100% do seu dinheiro. Sem burocracia, basta um clique.</p>
+          <p>O risco é todo nosso. Se você não gostar do material ou achar que não é pra você em nenhum dos pacotes, devolvemos 100% do seu dinheiro. Sem burocracia, basta um e-mail.</p>
         </div>
       </div>
     </div>
@@ -745,16 +902,20 @@
       </div>
       <div class="faq-list">
         <details>
+          <summary>Qual a diferença entre o Plano Básico e o Kit Premium?</summary>
+          <div>O <strong>Plano Básico (R$ 10)</strong> dá acesso exclusivamente à Apostila Digital com as receitas do balde de pipoca. Já o <strong>Kit Premium (R$ 27)</strong> é o nosso método completo acelerador: ele inclui a técnica exclusiva de crocância por até 30 dias, as vídeo aulas práticas do ponto do caramelo, o banco de fotos e vídeos para você começar a divulgar e vender antes de produzir, planilha automatizada, suporte individual pelo WhatsApp, certificado de conclusão e todos os bônus especiais com acesso vitalício.</div>
+        </details>
+        <details>
           <summary>Preciso de máquinas caras para estourar a pipoca?</summary>
           <div><strong>Não!</strong> O nosso método foi criado para você usar a panela de alumínio que já tem na sua cozinha.</div>
         </details>
         <details>
           <summary>Como e quando vou receber o acesso?</summary>
-          <div><strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado, você receberá um e-mail com o seu link de acesso.</div>
+          <div><strong>Imediatamente!</strong> Assim que o seu pagamento for confirmado, você receberá um e-mail automático com todos os seus dados e o link de acesso aos materiais escolhidos.</div>
         </details>
         <details>
-          <summary>E se eu tiver vergonha ou não souber vender?</summary>
-          <div>É por isso que incluímos os <strong>Scripts de Vendas Automáticas</strong>. Basta copiar nossos textos, usar as fotos e colar no seu WhatsApp/Instagram.</div>
+          <summary>E se eu comprar o básico e depois quiser o premium?</summary>
+          <div>Você até pode fazer isso, mas recomendamos garantir o Premium agora, pois este valor de <strong>R$ 27,00</strong> é promocional apenas para esta página e mudará de preço em breve.</div>
         </details>
       </div>
     </div>
@@ -767,12 +928,13 @@
     </div>
   </footer>
 
+  <!-- Notificação Flutuante de Compra Recente -->
   <div id="purchase-notification">
     <div class="notification-icon">
       <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
     </div>
     <div>
-      <p class="notification-title"><strong id="notify-name">Marta</strong> acabou de comprar</p>
+      <p class="notification-title"><strong id="notify-name">Marta</strong> comprou o <strong id="notify-plan" style="color:var(--brand-600);">Kit Premium</strong></p>
       <p class="notification-time">Há <span id="notify-time">1 minuto</span></p>
     </div>
   </div>
@@ -780,25 +942,35 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const buyers = [
-        { name: 'Marta', time: '1 minuto' },
-        { name: 'Márcia', time: '4 minutos' },
-        { name: 'Juliana', time: '12 minutos' },
-        { name: 'Ana Paula', time: '23 minutos' },
-        { name: 'Fernanda', time: '5 minutos' },
-        { name: 'Camila', time: '2 minutos' },
-        { name: 'Amanda', time: '8 minutos' },
-        { name: 'Letícia', time: 'agora mesmo' },
-        { name: 'Bruna', time: '15 minutos' },
-        { name: 'Patrícia', time: '3 minutos' }
+        { name: 'Marta', time: '1 minuto', plan: 'Kit Premium ⭐' },
+        { name: 'Márcia', time: '4 minutos', plan: 'Plano Básico' },
+        { name: 'Juliana', time: '2 minutos', plan: 'Kit Premium ⭐' },
+        { name: 'Ana Paula', time: '23 minutos', plan: 'Kit Premium ⭐' },
+        { name: 'Fernanda', time: '5 minutos', plan: 'Plano Básico' },
+        { name: 'Camila', time: '2 minutos', plan: 'Kit Premium ⭐' },
+        { name: 'Amanda', time: '8 minutos', plan: 'Kit Premium ⭐' },
+        { name: 'Letícia', time: 'agora mesmo', plan: 'Kit Premium ⭐' },
+        { name: 'Bruna', time: '15 minutos', plan: 'Plano Básico' },
+        { name: 'Patrícia', time: '3 minutos', plan: 'Kit Premium ⭐' }
       ];
 
       const notificationEl = document.getElementById('purchase-notification');
       const nameEl = document.getElementById('notify-name');
+      const planEl = document.getElementById('notify-plan');
       const timeEl = document.getElementById('notify-time');
 
       function showNextNotification() {
         const buyer = buyers[Math.floor(Math.random() * buyers.length)];
         nameEl.textContent = buyer.name;
+        planEl.textContent = buyer.plan;
+        
+        // Destacar o plano premium em rosa na notificação
+        if (buyer.plan.includes('Premium')) {
+          planEl.style.color = '#db2777';
+        } else {
+          planEl.style.color = '#1f2937';
+        }
+
         timeEl.textContent = buyer.time;
         notificationEl.classList.add('notification-show');
         setTimeout(() => {
@@ -812,5 +984,4 @@
       }, 3000);
     });
   </script>
-</body>
-</html>
+</body></html>
